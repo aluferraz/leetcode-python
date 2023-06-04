@@ -1,7 +1,10 @@
-from leetcode.editor.en.Q1091.ShortestPathInBinaryMatrix import ShortestPathInBinaryMatrix
-from leetcode.editor.en.Q1230.TossStrangeCoins import TossStrangeCoins
-from leetcode.editor.en.Q1575.CountAllPossibleRoutes import Solution
+from contest import Solution
+from leetcode.editor.en.Q2328.NumberOfIncreasingPathsInAGrid import NumberOfIncreasingPathsInAGrid
+from leetcode.editor.en.Q547.NumberOfProvinces import NumberOfProvinces
 
 if __name__ == '__main__':
-    print(Solution().countRoutes([4, 3, 1], 1, 0, 6))
-    # print(TossStrangeCoins().probabilityOfHeads([0, 0.1, 0.2], 1))
+    # print(Solution().count("6312",
+    #                        "9416",
+    #                        29,
+    #                        30, ))
+    print(NumberOfIncreasingPathsInAGrid().countPaths([[1, 1], [3, 4]]))

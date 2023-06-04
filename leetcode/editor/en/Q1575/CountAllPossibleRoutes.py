@@ -4,9 +4,6 @@ import collections
 
 class Solution(object):
 
-    def __init__(self):
-        self.cache = collections.defaultdict(lambda: None)
-
     def countRoutes(self, locations, start, finish, fuel):
         """
         :type locations: List[int]
@@ -16,47 +13,33 @@ class Solution(object):
         :rtype: int
         """
         MOD = (10 ** 9) + 7
-        INF = 10 ** 20
         N = len(locations)
-        dp = [[0 for _ in range(0, N + 1)] for _ in range(0, fuel + 1)]
-        for i in range(0, N):
-            dp[0][i] = fuel
+        dp = [[False for _ in range(N)] for _ in range(fuel + 1)]
 
-        for i in range(0, fuel + 1):
-            # for j in range(0, N):
-                
+        for f in range(fuel + 1):
+            for i in range(N):
+                costToFinish = abs(locations[i] - locations[finish])
+                dp[f][i] = costToFinish <= f
 
+        cache = {}
 
+        def count(start, finish, fuel):
+            ans = 0
+            if start == finish:
+                ans += 1
+            if ((start, fuel) in cache):
+                return cache[(start, fuel)]
+            for i in range(N):
+                if i == start:
+                    continue
+                cost = abs(locations[i] - locations[start])
+                remaining = fuel - cost
+                if remaining >= 0 and dp[remaining][i]:  # If jumping to "i" is possible and "i" can jump to finish
+                    ans = (ans + count(i, finish, remaining)) % MOD
+            cache[(start, fuel)] = ans % MOD
+            return cache[(start, fuel)]
 
-        # if self.cache[(start, finish, fuel)] is not None:
-        #     return self.cache[(start, finish, fuel)]
-        # q = collections.deque()
-        # q.append([start, fuel])
-        # ans = 0
-        # N = len(locations)
-        # while len(q) > 0:
-        #     size = len(q)
-        #     for _ in range(0, size):
-        #         info = q.popleft()
-        #         node = info[0]
-        #         remaining = info[1]
-        #
-        #         for next_location in range(0, N):
-        #             if next_location == node:
-        #                 continue
-        #             cost = abs(locations[node] - locations[next_location])
-        #             fuelRequired = remaining - cost
-        #             if fuelRequired >= 0:
-        #                 if next_location == finish:
-        #                     ans = (ans + 1) % MOD
-        #                 else:
-        #                     q.append([next_location, fuelRequired])
-        #                 fuelBouncing = fuelRequired - abs(locations[next_location] - locations[node])
-        #                 if fuelBouncing >= 0:
-        #                     ans = (ans + self.countRoutes(locations, node, finish, fuelBouncing)) % MOD
-        # ans %= MOD
-        # self.cache[(start, finish, fuel)] = ans
-        # return ans
+        return count(start, finish, fuel)
 
 
 # leetcode submit region end(Prohibit modification and deletion)

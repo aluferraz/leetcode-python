@@ -1,4 +1,8 @@
 # leetcode submit region begin(Prohibit modification and deletion)
+import collections
+import math
+
+
 class Solution(object):
     def numMusicPlaylists(self, N, goal, k):
         """
@@ -7,28 +11,24 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        # playlist = []
-        # songs = [i for i in range(1, N + 1)]
-        # canBeUsed = [0 for i in range(0, N + 1)]
+
+        # playlist = [0 for _ in range(goal)]
         #
-        # cache = {}
+        # def count(songs, i, nextRepeat):
+        #     if i >= goal:
+        #         return
+        #     if i == nextRepeat and i - k - 1 >= 0:
+        #         songs = N
+        #     nextRepeat = i + k + 1
+        #     playlist[i] = songs
+        #     count(songs - 1, i + 1, nextRepeat)
         #
-        # def count(i):
-        #     if len(playlist) == goal:
-        #         return 1
-        #     ans = 0
-        #     for j in range(0, N):
-        #         nextSong = songs[((i % N) + j) % N]
-        #         if i < canBeUsed[nextSong]:
-        #             continue
-        #         canBeUsed[nextSong] = i + 1 + k
-        #         playlist.append(nextSong)
-        #         ans += count((i + 1))
-        #         playlist.pop()
+        # count(N, 0, 0)
         #
-        #     return ans
-        #
-        # return count(0)
+        # ans = 1
+        # for p in playlist:
+        #     ans *= p
+        # return ans
 
 
 # leetcode submit region end(Prohibit modification and deletion)

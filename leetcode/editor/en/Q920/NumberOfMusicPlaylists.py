@@ -11,27 +11,24 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
+        cache = {}
+        MOD = (10 ** 9) + 7
 
-        # playlist = [0 for _ in range(goal)]
-        #
-        # def count(songs, i, nextRepeat):
-        #     if i >= goal:
-        #         return
-        #     if i == nextRepeat and i - k - 1 >= 0:
-        #         songs = N
-        #     nextRepeat = i + k + 1
-        #     playlist[i] = songs
-        #     count(songs - 1, i + 1, nextRepeat)
-        #
-        # count(N, 0, 0)
-        #
-        # ans = 1
-        # for p in playlist:
-        #     ans *= p
-        # return ans
+        def count(playlistLen, uniqueSongsPlayed):
+            if playlistLen == goal:
+                return 1 if uniqueSongsPlayed == N else 0
+            if (playlistLen, uniqueSongsPlayed) in cache:
+                return cache[(playlistLen, uniqueSongsPlayed)]
+            repeatSong = (count(playlistLen + 1, uniqueSongsPlayed) * max(0, uniqueSongsPlayed - k)) % MOD
+            newSong = ((N - uniqueSongsPlayed) * count(playlistLen + 1, uniqueSongsPlayed + 1)) % MOD
 
+            cache[(playlistLen, uniqueSongsPlayed)] = repeatSong + newSong
 
-# leetcode submit region end(Prohibit modification and deletion)
+            return cache[(playlistLen, uniqueSongsPlayed)]
+
+        return count(0, 0)
+
+        # leetcode submit region end(Prohibit modification and deletion)
 
 
 class NumberOfMusicPlaylists(Solution):

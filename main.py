@@ -1,11 +1,8 @@
 from contest import Solution
-from leetcode.editor.en.Q1146.SnapshotArray import SnapshotArray
-from leetcode.editor.en.Q1150.CheckIfANumberIsMajorityElementInASortedArray import \
-    CheckIfANumberIsMajorityElementInASortedArray
-from leetcode.editor.en.Q1802.MaximumValueAtAGivenIndexInABoundedArray import MaximumValueAtAGivenIndexInABoundedArray
-from leetcode.editor.en.Q2231.LargestNumberAfterDigitSwapsByParity import LargestNumberAfterDigitSwapsByParity
-from leetcode.editor.en.Q69.Sqrtx import Sqrtx
-from leetcode.editor.en.Q808.SoupServings import SoupServings
+from leetcode.editor.en.Q1187.MakeArrayStrictlyIncreasing import MakeArrayStrictlyIncreasing
+from leetcode.editor.en.Q1569.NumberOfWaysToReorderArrayToGetSameBst import NumberOfWaysToReorderArrayToGetSameBst
+from leetcode.editor.en.Q2423.RemoveLetterToEqualizeFrequency import RemoveLetterToEqualizeFrequency
+from leetcode.editor.en.Q698.PartitionToKEqualSumSubsets import PartitionToKEqualSumSubsets
 
 if __name__ == '__main__':
-    print(LargestNumberAfterDigitSwapsByParity().largestInteger(1234))
+    print(RemoveLetterToEqualizeFrequency().equalFrequency("abbcc"))

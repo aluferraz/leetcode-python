@@ -1,4 +1,4 @@
 from contest import Solution
 
 if __name__ == '__main__':
-    print(NumberOfValidWordsInASentence().countValidWords("!this  1-s b8d!"))
+    print(Solution().specialPerm([20,100,50,5,10,70,7]))

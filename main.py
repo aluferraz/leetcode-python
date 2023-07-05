@@ -1,12 +1,10 @@
 from contest import Solution
-from leetcode.editor.en.Q1510.StoneGameIv import StoneGameIv
-from leetcode.editor.en.Q1751.MaximumNumberOfEventsThatCanBeAttendedIi import MaximumNumberOfEventsThatCanBeAttendedIi
-from leetcode.editor.en.Q859.BuddyStrings import BuddyStrings
-from leetcode.editor.en.Q864.ShortestPathToGetAllKeys import ShortestPathToGetAllKeys
+from leetcode.editor.en.Q137.SingleNumberIi import SingleNumberIi
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(BuddyStrings().buddyStrings("abab", "abab"))  # print(FindKPairsWithSmallestSums().kSmallestPairs(
+    print(SingleNumberIi().singleNumber([0, 1, 0, 1, 0, 1, 99]
+                                        ))  # print(FindKPairsWithSmallestSums().kSmallestPairs(
     #     [34, 774, 1640, 1814, 2364, 2733, 2872, 3556, 4310, 4344, 4850, 5158, 6062, 6778, 7542, 8115, 8590, 9071, 9204,
     #      10021, 10288, 10987, 11850, 12773, 12948, 13940, 14475, 14572, 15254, 15730, 16287, 17010, 17698, 18014, 18128,
     #      18692, 18804, 19283, 19804, 20386, 20763, 20808, 21600, 22144, 22982, 23535, 23861, 23982, 24938, 25251, 25663,

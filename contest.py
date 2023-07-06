@@ -5,51 +5,63 @@ from functools import cache
 from math import gcd
 from typing import List
 
+import sortedcontainers
+
 
 class Solution:
-    def survivedRobotsHealths(self, positions: List[int], healths: List[int], directions: str) -> List[int]:
-        N = len(positions)
-
-        timeline = []
+    def sumImbalanceNumbers(self, nums: List[int]) -> int:
+        N = len(nums)
+        maxEl = max(nums)
+        distribution = [1 for _ in range(maxEl + 1)]
+        distribution[0] = 0
+        ans = 0
         for i in range(N):
-            dire = -1 if directions[i] == 'R' else 1
-            timeline.append((positions[i], dire, healths[i], i))
+            segTree = SegTree(distribution)
+            segTree.updateIndex(nums[i], 0)
+            left = nums[i]
+            right = nums[i]
+            for j in range(i + 1, N):
+                segTree.updateIndex(nums[j], 0)
+                left = min(nums[j], left)
+                right = max(nums[j], right)
+                ans = ans + segTree.queryRange(left, right)
+        return ans
 
-        timeline.sort(key=lambda x: (x[0], x[1]))
 
-        ans = collections.deque()
-        ans.append(timeline[0])
+class SegTree:
 
-        for i in range(1, N):
-            if len(ans) >= 1:
-                (position, dire, health, j) = timeline[i]
-                (prevPosition, prevDire, prevHealth, k) = ans[- 1]
-                if dire == prevDire or prevDire == 1 and dire == -1:
-                    ans.append(timeline[i])
-                else:
-                    remaining = health
-                    while remaining > 0 and len(ans) > 0 and prevDire == -1 and prevPosition < position:
-                        if remaining > prevHealth:
-                            remaining -= 1
-                        elif remaining < prevHealth:
-                            remaining = -1
-                        else:
-                            remaining = 0
-                        ans.pop()
-                        if len(ans) > 0 and remaining > 0:
-                            (prevPosition, prevDire, prevHealth, k) = ans[-1]
-                    if remaining > 0:
-                        ans.append((position, dire, remaining, j))
-                    elif remaining < 0:
-                        ans.append((prevPosition, prevDire, prevHealth - 1, k))
-            else:
-                ans.append(timeline[i])
+    def __init__(self, arr):
+        self.size = len(arr)
+        self.segtree = [0 for _ in range(2 * self.size)]
+        for i in range(self.size, len(self.segtree)):
+            self.segtree[i] = arr[i - self.size]
+        for i in range(self.size - 1, -1, -1):
+            a = self.segtree[2 * i]
+            b = self.segtree[(2 * i) + 1]
+            self.segtree[i] = a + b
 
-        ans = list(ans)
-        ans.sort(key=lambda x: x[3])
+    def queryRange(self, left, right):
+        left += self.size
+        right += self.size
+        ans = 0
+        while left < right:
 
-        final = []
+            if left % 2 == 1:
+                ans += self.segtree[left]
+                left += 1
+            if right % 2 == 1:
+                right -= 1
+                ans += self.segtree[right]
 
-        for (position, dire, health, j) in ans:
-            final.append(health)
-        return final
+            left //= 2
+            right //= 2
+        return ans
+
+    def updateIndex(self, index, value):
+        index += self.size
+        self.segtree[index] = value
+        while index > 1:
+            index //= 2
+            a = self.segtree[2 * index]
+            b = self.segtree[2 * index + 1]
+            self.segtree[index] = a + b

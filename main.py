@@ -1,10 +1,10 @@
 from contest import Solution
-from leetcode.editor.en.Q137.SingleNumberIi import SingleNumberIi
+from leetcode.editor.en.Q2024.MaximizeTheConfusionOfAnExam import MaximizeTheConfusionOfAnExam
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(SingleNumberIi().singleNumber([0, 1, 0, 1, 0, 1, 99]
-                                        ))
+    print(MaximizeTheConfusionOfAnExam().maxConsecutiveAnswers("FFFTTFTTFT"
+                                                               , 3))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     #     [34, 774, 1640, 1814, 2364, 2733, 2872, 3556, 4310, 4344, 4850, 5158, 6062, 6778, 7542, 8115, 8590, 9071, 9204,
     #      10021, 10288, 10987, 11850, 12773, 12948, 13940, 14475, 14572, 15254, 15730, 16287, 17010, 17698, 18014, 18128,

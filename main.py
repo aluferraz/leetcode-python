@@ -1,4 +1,5 @@
 from contest import Solution
+from leetcode.editor.en.Q207.CourseSchedule import CourseSchedule
 from leetcode.editor.en.Q340.LongestSubstringWithAtMostKDistinctCharacters import \
     LongestSubstringWithAtMostKDistinctCharacters
 from leetcode.editor.en.Q802.FindEventualSafeStates import FindEventualSafeStates
@@ -6,7 +7,7 @@ from leetcode.editor.en.Q863.AllNodesDistanceKInBinaryTree import AllNodesDistan
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(LongestSubstringWithAtMostKDistinctCharacters().lengthOfLongestSubstringKDistinct("eceba", 2))
+    print(CourseSchedule().canFinish(2, []))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     #     [34, 774, 1640, 1814, 2364, 2733, 2872, 3556, 4310, 4344, 4850, 5158, 6062, 6778, 7542, 8115, 8590, 9071, 9204,
     #      10021, 10288, 10987, 11850, 12773, 12948, 13940, 14475, 14572, 15254, 15730, 16287, 17010, 17698, 18014, 18128,

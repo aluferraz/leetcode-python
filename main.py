@@ -1,13 +1,14 @@
 from contest import Solution
-from leetcode.editor.en.Q207.CourseSchedule import CourseSchedule
-from leetcode.editor.en.Q340.LongestSubstringWithAtMostKDistinctCharacters import \
-    LongestSubstringWithAtMostKDistinctCharacters
-from leetcode.editor.en.Q802.FindEventualSafeStates import FindEventualSafeStates
-from leetcode.editor.en.Q863.AllNodesDistanceKInBinaryTree import AllNodesDistanceKInBinaryTree
+from leetcode.editor.en.Q1218.LongestArithmeticSubsequenceOfGivenDifference import \
+    LongestArithmeticSubsequenceOfGivenDifference
+from leetcode.editor.en.Q2781.LengthOfTheLongestValidSubstring import LengthOfTheLongestValidSubstring
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(CourseSchedule().canFinish(2, []))
+    print(LengthOfTheLongestValidSubstring().longestValidSubstring("acbc",
+                                                                   ["cbc", "acb", "acb", "acbc"]))
+    # print(Solution().minimumIndex([2, 1, 3, 1, 1, 1, 7, 1, 2, 1]))
+    # print(FindKPairsWithSmallestSums().kSmallestPairs(
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     #     [34, 774, 1640, 1814, 2364, 2733, 2872, 3556, 4310, 4344, 4850, 5158, 6062, 6778, 7542, 8115, 8590, 9071, 9204,
     #      10021, 10288, 10987, 11850, 12773, 12948, 13940, 14475, 14572, 15254, 15730, 16287, 17010, 17698, 18014, 18128,

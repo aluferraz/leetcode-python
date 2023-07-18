@@ -2,11 +2,11 @@ from contest import Solution
 from leetcode.editor.en.Q1218.LongestArithmeticSubsequenceOfGivenDifference import \
     LongestArithmeticSubsequenceOfGivenDifference
 from leetcode.editor.en.Q2781.LengthOfTheLongestValidSubstring import LengthOfTheLongestValidSubstring
+from leetcode.editor.en.Q535.EncodeAndDecodeTinyurl import Codec
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(LengthOfTheLongestValidSubstring().longestValidSubstring("acbc",
-                                                                   ["cbc", "acb", "acb", "acbc"]))
+    print(Codec().encode('"https://leetcode.com/problems/design-tinyurl"'))
     # print(Solution().minimumIndex([2, 1, 3, 1, 1, 1, 7, 1, 2, 1]))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     # print(FindKPairsWithSmallestSums().kSmallestPairs(

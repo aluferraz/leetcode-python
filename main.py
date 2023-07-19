@@ -1,12 +1,16 @@
 from contest import Solution
-from leetcode.editor.en.Q1218.LongestArithmeticSubsequenceOfGivenDifference import \
-    LongestArithmeticSubsequenceOfGivenDifference
-from leetcode.editor.en.Q2781.LengthOfTheLongestValidSubstring import LengthOfTheLongestValidSubstring
+from leetcode.editor.en.Q146.LruCache import LRUCache
+from leetcode.editor.en.Q2765.LongestAlternatingSubarray import LongestAlternatingSubarray
+from leetcode.editor.en.Q2766.RelocateMarbles import RelocateMarbles
+from leetcode.editor.en.Q2767.PartitionStringIntoMinimumBeautifulSubstrings import \
+    PartitionStringIntoMinimumBeautifulSubstrings
 from leetcode.editor.en.Q535.EncodeAndDecodeTinyurl import Codec
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(Codec().encode('"https://leetcode.com/problems/design-tinyurl"'))
+    print(PartitionStringIntoMinimumBeautifulSubstrings().minimumBeautifulSubstrings("100111000110111"))
+
+    # print(Codec().encode('"https://leetcode.com/problems/design-tinyurl"'))
     # print(Solution().minimumIndex([2, 1, 3, 1, 1, 1, 7, 1, 2, 1]))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     # print(FindKPairsWithSmallestSums().kSmallestPairs(

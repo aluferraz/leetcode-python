@@ -1,11 +1,12 @@
 from contest import Solution
-from leetcode.editor.en.Q2549.CountDistinctNumbersOnBoard import CountDistinctNumbersOnBoard
-from leetcode.editor.en.Q2646.MinimizeTheTotalPriceOfTheTrips import MinimizeTheTotalPriceOfTheTrips
-from leetcode.editor.en.Q673.NumberOfLongestIncreasingSubsequence import NumberOfLongestIncreasingSubsequence
+from leetcode.editor.en.Q2790.MaximumNumberOfGroupsWithIncreasingLength import MaximumNumberOfGroupsWithIncreasingLength
+from leetcode.editor.en.Q439.TernaryExpressionParser import TernaryExpressionParser
+from leetcode.editor.en.Q50.PowxN import PowxN
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(CountDistinctNumbersOnBoard().distinctIntegers(5))
+    # print(MaximumNumberOfGroupsWithIncreasingLength().maxIncreasingGroups())
+    print(TernaryExpressionParser().parseTernary("F?T:F?T?1:2:F?3:4"))
     # print(Solution().minimumIndex([2, 1, 3, 1, 1, 1, 7, 1, 2, 1]))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     # print(FindKPairsWithSmallestSums().kSmallestPairs(

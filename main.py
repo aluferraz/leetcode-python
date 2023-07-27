@@ -1,13 +1,14 @@
 from contest import Solution
 from leetcode.editor.en.Q1089.DuplicateZeros import DuplicateZeros
+from leetcode.editor.en.Q1870.MinimumSpeedToArriveOnTime import MinimumSpeedToArriveOnTime
 from leetcode.editor.en.Q2790.MaximumNumberOfGroupsWithIncreasingLength import MaximumNumberOfGroupsWithIncreasingLength
+from leetcode.editor.en.Q2791.CountPathsThatCanFormAPalindromeInATree import CountPathsThatCanFormAPalindromeInATree
 from leetcode.editor.en.Q439.TernaryExpressionParser import TernaryExpressionParser
 from leetcode.editor.en.Q50.PowxN import PowxN
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(DuplicateZeros().duplicateZeros([1, 0, 2, 3, 0, 4, 5, 0]))
-    # print(Solution().minimumIndex([2, 1, 3, 1, 1, 1, 7, 1, 2, 1]))
+    print(CountPathsThatCanFormAPalindromeInATree().countPalindromePaths(parent=[-1, 0, 0, 1, 1, 2], s="acaabc"))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     #     [34, 774, 1640, 1814, 2364, 2733, 2872, 3556, 4310, 4344, 4850, 5158, 6062, 6778, 7542, 8115, 8590, 9071, 9204,

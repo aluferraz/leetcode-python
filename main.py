@@ -1,14 +1,12 @@
 from contest import Solution
-from leetcode.editor.en.Q1089.DuplicateZeros import DuplicateZeros
-from leetcode.editor.en.Q1870.MinimumSpeedToArriveOnTime import MinimumSpeedToArriveOnTime
-from leetcode.editor.en.Q2790.MaximumNumberOfGroupsWithIncreasingLength import MaximumNumberOfGroupsWithIncreasingLength
-from leetcode.editor.en.Q2791.CountPathsThatCanFormAPalindromeInATree import CountPathsThatCanFormAPalindromeInATree
-from leetcode.editor.en.Q439.TernaryExpressionParser import TernaryExpressionParser
-from leetcode.editor.en.Q50.PowxN import PowxN
+from leetcode.editor.en.Q154.FindMinimumInRotatedSortedArrayIi import FindMinimumInRotatedSortedArrayIi
+from leetcode.editor.en.Q436.FindRightInterval import FindRightInterval
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(CountPathsThatCanFormAPalindromeInATree().countPalindromePaths(parent=[-1, 0, 0, 1, 1, 2], s="acaabc"))
+    print(FindMinimumInRotatedSortedArrayIi().findMin([1, 1, 2, 3, 0, 0]
+
+                                                      ))
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     # print(FindKPairsWithSmallestSums().kSmallestPairs(
     #     [34, 774, 1640, 1814, 2364, 2733, 2872, 3556, 4310, 4344, 4850, 5158, 6062, 6778, 7542, 8115, 8590, 9071, 9204,

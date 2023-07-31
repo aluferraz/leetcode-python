@@ -10,47 +10,47 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def maxIncreasingGroups(self, usageLimits: List[int]) -> int:
-
-        to_use = [(-t, i) for i, t in enumerate(usageLimits)]
-        to_use.sort()
-        N = len(to_use)
-        remaining_list = LinkedList()
-        for i in range(len(to_use)):
-            remaining_list.add_node(LLNode(to_use[i][1], -to_use[i][0]))
+    def countSteppingNumbers(self, low: str, high: str) -> int:
+        current = low
         ans = 0
 
-        def go(prev):
-            if remaining_list.get_size() < prev + 1:
-                return 0
-            left = remaining_list.head.value
-            right = remaining_list.tail.value
+        def get_number_sum(s):
+            ns = 0
+            for i in range(len(s) - 1):
+                ns += int(s[i])
+            return ns
 
-            while left < right:
-                mid = (left + right) // 2
-                if mid in remaining_list.nodes or remaining_list.get_by_key(mid).value > 1:
-                    right = mid
-                else:
-                    left = mid + 1
-            start = left
-            idx = start
-            mask = 0
-            for i in range(prev + 1):
-                idx = (start + i) % remaining_list.get_size()
-                remaining, number = to_use[idx]
-                if mask & (1 << number) != 0:
-                    return 0
-                mask |= (1 << number)
-                remaining += 1
-                if remaining == 0:
-                    to_use.pop(idx)
-                    idx -= 1
-                else:
-                    to_use[idx] = (remaining, number)
+        ans = set()
 
-            return 1 + go(prev + 1)
+        def get_targets(sig):
+            # sig - x = 1
+            # x = sig - 1
+            # sig - x = -1
+            # x = sig + 1
+            targets = set(
+                [abs(sig + 1), abs(sig - 1)]
+            )
+            a = 0
+            prepend = str(current)
+            prepend = prepend[:len(prepend) - 1]
+            for t in targets:
+                if t >= 10:
+                    continue
+                if int(prepend + str(t)) >= int(current) and int(prepend + str(t)) <= int(high):
+                    ans.add(int(prepend + str(t)))
 
-        return go(0)
+        while int(current) <= int(high):
+            if len(str(current)) == 1:
+                for i in range(current, 11):
+                    ans.add(i)
+                current = 11
+                continue
+            sig = get_number_sum(str(current))
+            # ans += get_targets(sig)
+            get_targets(sig)
+            current = int(current) + (10 - (int(current) % 10))
+
+        return len(ans)
 
 
 class SegTree:

@@ -140,3 +140,32 @@ class LinkedList:
 
     def get_size(self):
         return len(self.nodes)
+
+
+class Trie:
+
+    def __init__(self, s=""):
+        self.trie = {
+            'wid': ''
+        }
+        self.ending_char = '*'
+        if len(s) > 0:
+            self.from_str(s)
+        self.wids = set()
+
+    def from_str(self, s):
+        current = self.trie
+        prev_wid = ""
+        for char in s:
+            if char not in current:
+                # if prev_wid + char in self.wids:
+                #     print("a")
+                current[char] = {
+                    'wid': prev_wid + char
+                }
+            current = current[char]
+            prev_wid = current['wid']
+            # self.wids.add(current['wid'])
+
+        current[self.ending_char] = True
+        current['wid'] = current['wid'] + self.ending_char

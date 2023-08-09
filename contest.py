@@ -3,169 +3,193 @@ import heapq
 import math
 from functools import cache
 from math import gcd
-from typing import List
+from typing import List, Optional
 
 import sortedcontainers
 from sortedcontainers import SortedList
 
 
 class Solution:
-    def countSteppingNumbers(self, low: str, high: str) -> int:
-        current = low
-        ans = 0
+    def maximumSafenessFactor(self, grid: List[List[int]]) -> int:
+        N = len(grid)
+        M = len(grid[0])
+        INF = 10 ** 20
 
-        def get_number_sum(s):
-            ns = 0
-            for i in range(len(s) - 1):
-                ns += int(s[i])
-            return ns
+        thiefs = []
 
-        ans = set()
+        def find_thiefs():
+            for i in range(N):
+                for j in range(M):
+                    if grid[i][j] == 1:
+                        thiefs.append((i, j))
 
-        def get_targets(sig):
-            # sig - x = 1
-            # x = sig - 1
-            # sig - x = -1
-            # x = sig + 1
-            targets = set(
-                [abs(sig + 1), abs(sig - 1)]
-            )
-            a = 0
-            prepend = str(current)
-            prepend = prepend[:len(prepend) - 1]
-            for t in targets:
-                if t >= 10:
-                    continue
-                if int(prepend + str(t)) >= int(current) and int(prepend + str(t)) <= int(high):
-                    ans.add(int(prepend + str(t)))
+        def isValidIdx(i, j):
+            return i >= 0 and i < N and j >= 0 and j < N
 
-        while int(current) <= int(high):
-            if len(str(current)) == 1:
-                for i in range(current, 11):
-                    ans.add(i)
-                current = 11
-                continue
-            sig = get_number_sum(str(current))
-            # ans += get_targets(sig)
-            get_targets(sig)
-            current = int(current) + (10 - (int(current) % 10))
+        def get_cost(x, y):
+            cost = 0
+            for (a, b) in thiefs:
+                if (a, b) == (x, y):
+                    return INF
+                cost = max(cost, abs(a - x) + abs(b - y))
+            return cost
 
-        return len(ans)
+        DIRECTIONS = [
+            (1, 0),
+            (0, 1),
+            (-1, 0),
+            (0, -1),
+        ]
 
+        find_thiefs()
 
-class SegTree:
+        if grid[0][0] == 1:
+            return 0
 
-    def __init__(self, arr):
-        self.size = len(arr)
-        self.segtree = [0 for _ in range(2 * self.size)]
-        for i in range(self.size, len(self.segtree)):
-            self.segtree[i] = arr[i - self.size]
-        for i in range(self.size - 1, -1, -1):
-            a = self.segtree[2 * i]
-            b = self.segtree[(2 * i) + 1]
-            self.segtree[i] = a + b
+        def bfs():
+            queue = collections.deque()
+            initial_cost = get_cost(0, 0)
+            queue.append([0, 0, initial_cost])
+            best = initial_cost
 
-    def queryRange(self, left, right):
-        left += self.size
-        right += self.size
-        ans = 0
-        while left < right:
+            best_at_node = {}
+            best_at_node[(0, 0)] = initial_cost
 
-            if left % 2 == 1:
-                ans += self.segtree[left]
-                left += 1
-            if right % 2 == 1:
-                right -= 1
-                ans += self.segtree[right]
+            visited = [[False for _ in range(N)] for _ in range(N)]
+            visited[0][0] = True
 
-            left //= 2
-            right //= 2
+            while len(queue) > 0:
+                size = len(queue)
+                for _ in range(size):
+                    cur = queue.popleft()
+                    cost = cur[2]
+                    if cur[0] == N - 1 and cur[1] == N - 1:
+                        best = min(best, cost)
+                        continue
+                    for (u, v) in DIRECTIONS:
+                        next_x = cur[0] + u
+                        next_y = cur[1] + v
+                        if isValidIdx(next_y, next_x) and not visited[next_y][next_x]:
+                            new_cost = min(cost, get_cost(next_y, next_x))
+                            visited[next_y][next_x] = True
+                            queue.append([next_y, next_x, new_cost])
+            return best
+
+        ans = bfs()
+        if ans >= INF:
+            return 0
         return ans
 
-    def updateIndex(self, index, value):
-        index += self.size
-        self.segtree[index] = value
-        while index > 1:
-            index //= 2
-            a = self.segtree[2 * index]
-            b = self.segtree[2 * index + 1]
-            self.segtree[index] = a + b
+    class SegTree:
 
+        def __init__(self, arr):
+            self.size = len(arr)
+            self.segtree = [0 for _ in range(2 * self.size)]
+            for i in range(self.size, len(self.segtree)):
+                self.segtree[i] = arr[i - self.size]
+            for i in range(self.size - 1, -1, -1):
+                a = self.segtree[2 * i]
+                b = self.segtree[(2 * i) + 1]
+                self.segtree[i] = a + b
 
-class LLNode:
-    def __init__(self, key, value):
-        self.key = key
-        self.value = value
-        self.next = None
-        self.prev = None
+        def queryRange(self, left, right):
+            left += self.size
+            right += self.size
+            ans = 0
+            while left < right:
 
+                if left % 2 == 1:
+                    ans += self.segtree[left]
+                    left += 1
+                if right % 2 == 1:
+                    right -= 1
+                    ans += self.segtree[right]
 
-class LinkedList:
-    def __init__(self):
-        self.head = None
-        self.tail = None
-        self.nodes = collections.OrderedDict()
+                left //= 2
+                right //= 2
+            return ans
 
-    def add_node(self, node):
-        node.next = None
-        node.prev = None
-        if self.head is None:
-            self.head = node
-            self.tail = node
-        else:
-            node.prev = self.tail
-            self.tail.next = node
-            self.tail = node
-        self.nodes[node.key] = node
+        def updateIndex(self, index, value):
+            index += self.size
+            self.segtree[index] = value
+            while index > 1:
+                index //= 2
+                a = self.segtree[2 * index]
+                b = self.segtree[2 * index + 1]
+                self.segtree[index] = a + b
 
-    def remove_node(self, node):
-        if not node.key in self.nodes:
-            return
-        if node == self.head:
-            self.head = self.head.next
-        if node == self.tail:
-            self.tail = self.tail.prev
-        if node.prev is not None:
-            node.prev.next = node.next
-        if node.next is not None:
-            node.next.prev = node.prev
-        node.next = None
-        node.prev = None
-        self.nodes.pop(node.key)
+    class LLNode:
+        def __init__(self, key, value):
+            self.key = key
+            self.value = value
+            self.next = None
+            self.prev = None
 
-    def get_by_key(self, key):
-        if key in self.nodes:
-            return self.nodes[key]
-        return LLNode(-1, -1)
+    class LinkedList:
+        def __init__(self):
+            self.head = None
+            self.tail = None
+            self.nodes = collections.OrderedDict()
 
-    def get_size(self):
-        return len(self.nodes)
+        def add_node(self, node):
+            node.next = None
+            node.prev = None
+            if self.head is None:
+                self.head = node
+                self.tail = node
+            else:
+                node.prev = self.tail
+                self.tail.next = node
+                self.tail = node
+            self.nodes[node.key] = node
 
+        def remove_node(self, node):
+            if not node.key in self.nodes:
+                return
+            if node == self.head:
+                self.head = self.head.next
+            if node == self.tail:
+                self.tail = self.tail.prev
+            if node.prev is not None:
+                node.prev.next = node.next
+            if node.next is not None:
+                node.next.prev = node.prev
+            node.next = None
+            node.prev = None
+            self.nodes.pop(node.key)
 
-class Trie:
+        def get_by_key(self, key):
+            if key in self.nodes:
+                return self.nodes[key]
+            return LLNode(-1, -1)
 
-    def __init__(self, s=""):
-        self.trie = {
-            'wid': ''
-        }
-        self.ending_char = '*'
-        if len(s) > 0:
-            self.from_str(s)
-        self.wids = set()
+        def get_size(self):
+            return len(self.nodes)
 
-    def from_str(self, s):
-        current = self.trie
-        prev_wid = ""
-        for char in s:
-            if char not in current:
-                # if prev_wid + char in self.wids:
-                #     print("a")
-                current[char] = {
-                    'wid': prev_wid + char
-                }
-            current = current[char]
-            prev_wid = current['wid']
-            # self.wids.add(current['wid'])
+    class Trie:
 
-        current[self.ending_char] = True
-        current['wid'] = current['wid'] + self.ending_char
+        def __init__(self, s=""):
+            self.trie = {
+                'wid': ''
+            }
+            self.ending_char = '*'
+            if len(s) > 0:
+                self.from_str(s)
+            self.wids = set()
+
+        def from_str(self, s):
+            current = self.trie
+            prev_wid = ""
+            for char in s:
+                if char not in current:
+                    # if prev_wid + char in self.wids:
+                    #     print("a")
+                    current[char] = {
+                        'wid': prev_wid + char
+                    }
+                current = current[char]
+                prev_wid = current['wid']
+                # self.wids.add(current['wid'])
+
+            current[self.ending_char] = True
+            current['wid'] = current['wid'] + self.ending_char

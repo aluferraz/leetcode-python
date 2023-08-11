@@ -1,3 +1,4 @@
+from functools import cache
 from typing import List
 
 
@@ -9,26 +10,36 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        INF = 10 ** 20
+
         N = len(nums)
-        presum = [0] * N
-        presum[0] = nums[0]
-        for i in range(1, N):
-            presum[i] = presum[i - 1] + nums[i]
 
-        dp = [
-            [
-                [
-                    [
-                        INF
-                    ] for _ in range(N)
-                ] for _ in range(N)
-            ] for _ in range(k + 1)
-        ]
+        def good(ans):
+            current_slice_tot = 0
+            slices = 1
 
-        #to be continued
+            for i in range(N):
+                if current_slice_tot + nums[i] <= ans and (i + k - slices) < N:
+                    current_slice_tot += nums[i]
+                else:
+                    if nums[i] > ans:
+                        return False
+                    slices += 1
+                    current_slice_tot = nums[i]
+            return slices == k
 
-    # leetcode submit region end(Prohibit modification and deletion)
+        left = min(nums)
+        right = sum(nums)
+
+        while left < right:
+            mid = (left + right) // 2
+            if good(mid):
+                right = mid
+            else:
+                left = mid + 1
+        return left
+
+
+# leetcode submit region end(Prohibit modification and deletion)
 
 
 class SplitArrayLargestSum(Solution):

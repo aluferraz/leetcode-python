@@ -10,75 +10,47 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def maximumSafenessFactor(self, grid: List[List[int]]) -> int:
-        N = len(grid)
-        M = len(grid[0])
+    def maximumScore(self, nums: List[int], k: int) -> int:
+
+        @cache
+        def get_prime_score(n):
+            score = set()
+            while n % 2 == 0:
+                score.add(2)
+                n //= 2
+
+            for i in range(3, int(math.sqrt(n)) + 1, 2):
+                if n % i == 0:
+                    score.add(i)
+                    n //= i
+            if n > 2:
+                score.add(n)
+            return len(score)
+
+        scores = []
+        N = len(nums)
+        nums_greedy = []
+        for i in range(N):
+            # scores.append(get_prime_score(nums[i]))
+            # heapq.heappush(nums_greedy, (-nums[i], -get_prime_score(nums[i]), i))
+            nums_greedy.append((-nums[i], -get_prime_score(nums[i]), i))
+        nums_greedy.sort()
         INF = 10 ** 20
 
-        thiefs = []
+        def go(i, prev, k):
+            if k == 0:
+                return 1
+            n, s, j = nums_greedy[i]
+            n = abs(n)
+            s = abs(s)
+            if s < prev[1]:
+                return prev[0] * go(i + 1, prev, k - 1)
+            elif s == prev[1]:
+                prev[2] = max(prev[2], j)
+                return prev[0] * go(i + 1, prev, k - 1)
+            return n * go(i + 1, [n, s, j], k - 1)
 
-        def find_thiefs():
-            for i in range(N):
-                for j in range(M):
-                    if grid[i][j] == 1:
-                        thiefs.append((i, j))
-
-        def isValidIdx(i, j):
-            return i >= 0 and i < N and j >= 0 and j < N
-
-        def get_cost(x, y):
-            cost = 0
-            for (a, b) in thiefs:
-                if (a, b) == (x, y):
-                    return INF
-                cost = max(cost, abs(a - x) + abs(b - y))
-            return cost
-
-        DIRECTIONS = [
-            (1, 0),
-            (0, 1),
-            (-1, 0),
-            (0, -1),
-        ]
-
-        find_thiefs()
-
-        if grid[0][0] == 1:
-            return 0
-
-        def bfs():
-            queue = collections.deque()
-            initial_cost = get_cost(0, 0)
-            queue.append([0, 0, initial_cost])
-            best = initial_cost
-
-            best_at_node = {}
-            best_at_node[(0, 0)] = initial_cost
-
-            visited = [[False for _ in range(N)] for _ in range(N)]
-            visited[0][0] = True
-
-            while len(queue) > 0:
-                size = len(queue)
-                for _ in range(size):
-                    cur = queue.popleft()
-                    cost = cur[2]
-                    if cur[0] == N - 1 and cur[1] == N - 1:
-                        best = min(best, cost)
-                        continue
-                    for (u, v) in DIRECTIONS:
-                        next_x = cur[0] + u
-                        next_y = cur[1] + v
-                        if isValidIdx(next_y, next_x) and not visited[next_y][next_x]:
-                            new_cost = min(cost, get_cost(next_y, next_x))
-                            visited[next_y][next_x] = True
-                            queue.append([next_y, next_x, new_cost])
-            return best
-
-        ans = bfs()
-        if ans >= INF:
-            return 0
-        return ans
+        return go(0, [1, -INF, -1], k) % (10 ** 9 + 7)
 
     class SegTree:
 

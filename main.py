@@ -1,14 +1,7 @@
 from contest import Solution
-from leetcode.editor.en.Q1231.DivideChocolate import DivideChocolate
-from leetcode.editor.en.Q1631.PathWithMinimumEffort import PathWithMinimumEffort
-from leetcode.editor.en.Q518.CoinChangeIi import CoinChangeIi
-from leetcode.editor.en.Q63.UniquePathsIi import UniquePathsIi
-from leetcode.editor.en.Q81.SearchInRotatedSortedArrayIi import SearchInRotatedSortedArrayIi
-
-# from leetcode.editor.en.Q2612.MinimumReverseOperations import MinimumReverseOperations
+from leetcode.editor.en.Q1235.MaximumProfitInJobScheduling import MaximumProfitInJobScheduling
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(Solution().maximumScore([8, 3, 9, 3, 8],
-                                  2))
-    # print(DivideChocolate().maximizeSweetness([1, 2, 2, 1, 2, 2, 1, 2, 2], k=2))
+    print(MaximumProfitInJobScheduling().jobScheduling(startTime=[1, 2, 3, 3], endTime=[3, 4, 5, 6],
+                                                       profit=[50, 10, 40, 70]))

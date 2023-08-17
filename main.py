@@ -1,8 +1,6 @@
 from contest import Solution
-from leetcode.editor.en.Q1235.MaximumProfitInJobScheduling import MaximumProfitInJobScheduling
-from leetcode.editor.en.Q490.TheMaze import TheMaze
+from leetcode.editor.en.Q239.SlidingWindowMaximum import SlidingWindowMaximum
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(TheMaze().hasPath(maze=[[0, 0, 1, 0, 0], [0, 0, 0, 0, 0], [0, 0, 0, 1, 0], [1, 1, 0, 1, 1], [0, 0, 0, 0, 0]],
-                            start=[0, 4], destination=[4, 4]))
+    print(SlidingWindowMaximum().maxSlidingWindow([1, 3, -1, -3, 5, 3, 6, 7], k=3))

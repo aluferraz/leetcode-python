@@ -10,158 +10,157 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def maximumScore(self, nums: List[int], k: int) -> int:
+    def squareFreeSubsets(self, nums: List[int]) -> int:
+
+        square_div = set()
 
         @cache
-        def get_prime_score(n):
-            score = set()
-            while n % 2 == 0:
-                score.add(2)
-                n //= 2
+        def isSquareFree(n):
+            for i in range(2, n):
+                d = i ** 2
+                if d > n:
+                    break
+                if n % d == 0:
+                    return False
+                return True
 
-            for i in range(3, int(math.sqrt(n)) + 1, 2):
-                if n % i == 0:
-                    score.add(i)
-                    n //= i
-            if n > 2:
-                score.add(n)
-            return len(score)
-
-        scores = []
         N = len(nums)
-        nums_greedy = []
-        for i in range(N):
-            # scores.append(get_prime_score(nums[i]))
-            # heapq.heappush(nums_greedy, (-nums[i], -get_prime_score(nums[i]), i))
-            nums_greedy.append((-nums[i], -get_prime_score(nums[i]), i))
-        nums_greedy.sort()
-        INF = 10 ** 20
 
-        def go(i, prev, k):
-            if k == 0:
-                return 1
-            n, s, j = nums_greedy[i]
-            n = abs(n)
-            s = abs(s)
-            if s < prev[1]:
-                return prev[0] * go(i + 1, prev, k - 1)
-            elif s == prev[1]:
-                prev[2] = max(prev[2], j)
-                return prev[0] * go(i + 1, prev, k - 1)
-            return n * go(i + 1, [n, s, j], k - 1)
+        dp = [
+            [0 for _ in range(N)] for _ in range(N)
+        ]
 
-        return go(0, [1, -INF, -1], k) % (10 ** 9 + 7)
-
-    class SegTree:
-
-        def __init__(self, arr):
-            self.size = len(arr)
-            self.segtree = [0 for _ in range(2 * self.size)]
-            for i in range(self.size, len(self.segtree)):
-                self.segtree[i] = arr[i - self.size]
-            for i in range(self.size - 1, -1, -1):
-                a = self.segtree[2 * i]
-                b = self.segtree[(2 * i) + 1]
-                self.segtree[i] = a + b
-
-        def queryRange(self, left, right):
-            left += self.size
-            right += self.size
+        def go(i, nlist):
+            if i < 0:
+                return 0
             ans = 0
-            while left < right:
+            if isSquareFree(nums[i]):
+                ans = 1
 
-                if left % 2 == 1:
-                    ans += self.segtree[left]
-                    left += 1
-                if right % 2 == 1:
-                    right -= 1
-                    ans += self.segtree[right]
+            list_here = list(nlist)
+            list_here.append(nums[i])
+            for l in nlist:
+                list_here.append(l * nums[i])
+                if isSquareFree(l * nums[i]):
+                    ans += 1
+            return ans + go(i - 1, list_here)
 
-                left //= 2
-                right //= 2
-            return ans
+        return go(N - 1, []) % (10 ** 9 + 7)
 
-        def updateIndex(self, index, value):
-            index += self.size
-            self.segtree[index] = value
-            while index > 1:
-                index //= 2
-                a = self.segtree[2 * index]
-                b = self.segtree[2 * index + 1]
-                self.segtree[index] = a + b
 
-    class LLNode:
-        def __init__(self, key, value):
-            self.key = key
-            self.value = value
-            self.next = None
-            self.prev = None
+class SegTree:
 
-    class LinkedList:
-        def __init__(self):
-            self.head = None
-            self.tail = None
-            self.nodes = collections.OrderedDict()
+    def __init__(self, arr):
+        self.size = len(arr)
+        self.segtree = [0 for _ in range(2 * self.size)]
+        for i in range(self.size, len(self.segtree)):
+            self.segtree[i] = arr[i - self.size]
+        for i in range(self.size - 1, -1, -1):
+            a = self.segtree[2 * i]
+            b = self.segtree[(2 * i) + 1]
+            self.segtree[i] = a + b
 
-        def add_node(self, node):
-            node.next = None
-            node.prev = None
-            if self.head is None:
-                self.head = node
-                self.tail = node
-            else:
-                node.prev = self.tail
-                self.tail.next = node
-                self.tail = node
-            self.nodes[node.key] = node
+    def queryRange(self, left, right):
+        left += self.size
+        right += self.size
+        ans = 0
+        while left < right:
 
-        def remove_node(self, node):
-            if not node.key in self.nodes:
-                return
-            if node == self.head:
-                self.head = self.head.next
-            if node == self.tail:
-                self.tail = self.tail.prev
-            if node.prev is not None:
-                node.prev.next = node.next
-            if node.next is not None:
-                node.next.prev = node.prev
-            node.next = None
-            node.prev = None
-            self.nodes.pop(node.key)
+            if left % 2 == 1:
+                ans += self.segtree[left]
+                left += 1
+            if right % 2 == 1:
+                right -= 1
+                ans += self.segtree[right]
 
-        def get_by_key(self, key):
-            if key in self.nodes:
-                return self.nodes[key]
-            return LLNode(-1, -1)
+            left //= 2
+            right //= 2
+        return ans
 
-        def get_size(self):
-            return len(self.nodes)
+    def updateIndex(self, index, value):
+        index += self.size
+        self.segtree[index] = value
+        while index > 1:
+            index //= 2
+            a = self.segtree[2 * index]
+            b = self.segtree[2 * index + 1]
+            self.segtree[index] = a + b
 
-    class Trie:
 
-        def __init__(self, s=""):
-            self.trie = {
-                'wid': ''
-            }
-            self.ending_char = '*'
-            if len(s) > 0:
-                self.from_str(s)
-            self.wids = set()
+class LLNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+        self.next = None
+        self.prev = None
 
-        def from_str(self, s):
-            current = self.trie
-            prev_wid = ""
-            for char in s:
-                if char not in current:
-                    # if prev_wid + char in self.wids:
-                    #     print("a")
-                    current[char] = {
-                        'wid': prev_wid + char
-                    }
-                current = current[char]
-                prev_wid = current['wid']
-                # self.wids.add(current['wid'])
 
-            current[self.ending_char] = True
-            current['wid'] = current['wid'] + self.ending_char
+class LinkedList:
+    def __init__(self):
+        self.head = None
+        self.tail = None
+        self.nodes = collections.OrderedDict()
+
+    def add_node(self, node):
+        node.next = None
+        node.prev = None
+        if self.head is None:
+            self.head = node
+            self.tail = node
+        else:
+            node.prev = self.tail
+            self.tail.next = node
+            self.tail = node
+        self.nodes[node.key] = node
+
+    def remove_node(self, node):
+        if not node.key in self.nodes:
+            return
+        if node == self.head:
+            self.head = self.head.next
+        if node == self.tail:
+            self.tail = self.tail.prev
+        if node.prev is not None:
+            node.prev.next = node.next
+        if node.next is not None:
+            node.next.prev = node.prev
+        node.next = None
+        node.prev = None
+        self.nodes.pop(node.key)
+
+    def get_by_key(self, key):
+        if key in self.nodes:
+            return self.nodes[key]
+        return LLNode(-1, -1)
+
+    def get_size(self):
+        return len(self.nodes)
+
+
+class Trie:
+
+    def __init__(self, s=""):
+        self.trie = {
+            'wid': ''
+        }
+        self.ending_char = '*'
+        if len(s) > 0:
+            self.from_str(s)
+        self.wids = set()
+
+    def from_str(self, s):
+        current = self.trie
+        prev_wid = ""
+        for char in s:
+            if char not in current:
+                # if prev_wid + char in self.wids:
+                #     print("a")
+                current[char] = {
+                    'wid': prev_wid + char
+                }
+            current = current[char]
+            prev_wid = current['wid']
+            # self.wids.add(current['wid'])
+
+        current[self.ending_char] = True
+        current['wid'] = current['wid'] + self.ending_char

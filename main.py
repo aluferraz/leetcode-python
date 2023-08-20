@@ -7,4 +7,5 @@ from leetcode.editor.en.Q542.Zero1Matrix import Zero1Matrix
 
 dummy = Solution()
 if __name__ == '__main__':
-    print(MaximumDifferenceBetweenIncreasingElements().maximumDifference([7, 1, 5, 4]))
+    print(Solution().longestEqualSubarray([4, 6, 6, 4, 9, 1, 9, 2, 4, 7, 1, 1, 10],
+                                          4)) # 3

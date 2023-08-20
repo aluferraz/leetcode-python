@@ -10,42 +10,43 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def squareFreeSubsets(self, nums: List[int]) -> int:
-
-        square_div = set()
-
-        @cache
-        def isSquareFree(n):
-            for i in range(2, n):
-                d = i ** 2
-                if d > n:
-                    break
-                if n % d == 0:
-                    return False
-                return True
-
+    def longestEqualSubarray(self, nums: List[int], k: int) -> int:
+        window = collections.deque()
+        window_counter = collections.Counter()
         N = len(nums)
 
-        dp = [
-            [0 for _ in range(N)] for _ in range(N)
-        ]
-
-        def go(i, nlist):
-            if i < 0:
-                return 0
-            ans = 0
-            if isSquareFree(nums[i]):
-                ans = 1
-
-            list_here = list(nlist)
-            list_here.append(nums[i])
-            for l in nlist:
-                list_here.append(l * nums[i])
-                if isSquareFree(l * nums[i]):
-                    ans += 1
-            return ans + go(i - 1, list_here)
-
-        return go(N - 1, []) % (10 ** 9 + 7)
+        ans = 0
+        i = 0
+        k_bkp = k
+        while i < N:
+            if len(window) == 0:
+                current = nums[i]
+            else:
+                current = window[0]
+            ans = max(ans, window_counter[current])
+            if nums[i] == current:
+                window.append(nums[i])
+                window_counter[nums[i]] += 1
+                ans = max(ans, window_counter[nums[i]])
+                i += 1
+            else:
+                if k > 0:
+                    k -= 1
+                    window.append(nums[i])
+                    window_counter[nums[i]] += 1
+                    ans = max(ans, window_counter[nums[i]])
+                    i += 1
+                else:
+                    # while len(window) > 0 and k <= 0:
+                    to_delete = window.popleft()
+                    window_counter[to_delete] -= 1
+                    if len(window) > 0:
+                        current = window[0]
+                        k = k_bkp - (len(window) - window_counter[current])
+                    else:
+                        k = k_bkp
+        remaining = window_counter.most_common()
+        return max(ans, remaining[0][1])
 
 
 class SegTree:

@@ -10,43 +10,40 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def longestEqualSubarray(self, nums: List[int], k: int) -> int:
-        window = collections.deque()
-        window_counter = collections.Counter()
+    def minOperations(self, nums: List[int], target: int) -> int:
         N = len(nums)
+        INF = 10 ** 20
+        nums.sort()
+        window = collections.deque(nums)
 
-        ans = 0
-        i = 0
-        k_bkp = k
-        while i < N:
-            if len(window) == 0:
-                current = nums[i]
-            else:
-                current = window[0]
-            ans = max(ans, window_counter[current])
-            if nums[i] == current:
-                window.append(nums[i])
-                window_counter[nums[i]] += 1
-                ans = max(ans, window_counter[nums[i]])
-                i += 1
-            else:
-                if k > 0:
-                    k -= 1
-                    window.append(nums[i])
-                    window_counter[nums[i]] += 1
-                    ans = max(ans, window_counter[nums[i]])
-                    i += 1
-                else:
-                    # while len(window) > 0 and k <= 0:
-                    to_delete = window.popleft()
-                    window_counter[to_delete] -= 1
-                    if len(window) > 0:
-                        current = window[0]
-                        k = k_bkp - (len(window) - window_counter[current])
-                    else:
-                        k = k_bkp
-        remaining = window_counter.most_common()
-        return max(ans, remaining[0][1])
+        @cache
+        def go(i, ftarget):
+            if i == N or ftarget < 0:
+                return INF
+            if ftarget == 0:
+                return 0
+            use = INF
+            skip = INF
+            divide = INF
+            if nums[i] == ftarget:
+                return 0
+            if nums[i] <= ftarget:
+                use = go(i, ftarget - nums[i])
+                skip = go(i + 1, ftarget)
+            if nums[i] > 1:
+                nums[i] //= 2
+                divide = 1 + go(i, ftarget)
+                nums[i] *= 2
+            ans = min(use, skip, divide)
+            return ans
+
+        ans = INF
+
+        for i in range(N):
+            ans = min(go(i, target), ans)
+        if ans >= INF:
+            return -1
+        return ans
 
 
 class SegTree:

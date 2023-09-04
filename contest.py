@@ -10,39 +10,37 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def minOperations(self, nums: List[int], target: int) -> int:
+    def countInterestingSubarrays(self, nums: List[int], modulo: int, k: int) -> int:
         N = len(nums)
-        INF = 10 ** 20
-        nums.sort()
-        window = collections.deque(nums)
-
-        @cache
-        def go(i, ftarget):
-            if i == N or ftarget < 0:
-                return INF
-            if ftarget == 0:
-                return 0
-            use = INF
-            skip = INF
-            divide = INF
-            if nums[i] == ftarget:
-                return 0
-            if nums[i] <= ftarget:
-                use = go(i, ftarget - nums[i])
-                skip = go(i + 1, ftarget)
-            if nums[i] > 1:
-                nums[i] //= 2
-                divide = 1 + go(i, ftarget)
-                nums[i] *= 2
-            ans = min(use, skip, divide)
-            return ans
-
-        ans = INF
+        counter_arr = [0] * N
 
         for i in range(N):
-            ans = min(go(i, target), ans)
-        if ans >= INF:
-            return -1
+            num = nums[i]
+            if num % modulo == k:
+                counter_arr[i] = 1
+
+        psum = [0] * N
+        psum[0] = counter_arr[0]
+        for i in range(1, N):
+            psum[i] = psum[i - 1] + counter_arr[1]
+
+        def get_number_of_subarrays(l, r):
+            degree_left = max(l, 1)
+            degree_right = N - r
+            return degree_left * degree_right
+
+        left = 0
+        right = 0
+        window_sum = 0
+        ans = 0
+        while right < N:
+            window_sum = psum[right] - (psum[left - 1] if left > 0 else 0)
+            while left <= right and window_sum % modulo < k:
+                left += 1
+                window_sum = psum[right] - (psum[left - 1] if left > 0 else 0)
+            if window_sum % modulo == k:
+                ans += get_number_of_subarrays(left, right)
+            right += 1
         return ans
 
 

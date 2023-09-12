@@ -10,39 +10,8 @@ from sortedcontainers import SortedList
 
 
 class Solution:
-    def countInterestingSubarrays(self, nums: List[int], modulo: int, k: int) -> int:
-        N = len(nums)
-        counter_arr = [0] * N
-
-        for i in range(N):
-            num = nums[i]
-            if num % modulo == k:
-                counter_arr[i] = 1
-
-        psum = [0] * N
-        psum[0] = counter_arr[0]
-        for i in range(1, N):
-            psum[i] = psum[i - 1] + counter_arr[1]
-
-        def get_number_of_subarrays(l, r):
-            degree_left = max(l, 1)
-            degree_right = N - r
-            return degree_left * degree_right
-
-        left = 0
-        right = 0
-        window_sum = 0
-        ans = 0
-        while right < N:
-            window_sum = psum[right] - (psum[left - 1] if left > 0 else 0)
-            while left <= right and window_sum % modulo < k:
-                left += 1
-                window_sum = psum[right] - (psum[left - 1] if left > 0 else 0)
-            if window_sum % modulo == k:
-                ans += get_number_of_subarrays(left, right)
-            right += 1
-        return ans
-
+    def minimumMoves(self, grid: List[List[int]]) -> int:
+        pass
 
 class SegTree:
 

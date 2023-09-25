@@ -8,31 +8,57 @@ from typing import List, Optional
 import sortedcontainers
 from sortedcontainers import SortedList
 
+upper = 10 ** 6
 
-# class Solution:
-#     def countPairs(self, coordinates: List[List[int]], k: int) -> int:
-#         N = len(coordinates)
-#         ans = 0
-#         for i in range(N):
-#             for j in range(i + 1, N):
-#                 if (coordinates[i][0] ^ coordinates[j][0]) + (coordinates[i][1] ^ coordinates[j][1]) == k:
-#                     ans += 1
-#         return ans
 
+def prime_sieve(n):
+    primes = [True for _ in range(n + 1)]
+    primes[0] = False
+    primes[1] = False
+
+    limit = int(math.sqrt(n))
+    for i in range(2, limit + 1):
+        if primes[i]:
+            j = 2
+            while j * i <= n:
+                primes[j * i] = False
+                j += 1
+    ans = [
+        i for i in range(len(primes)) if primes[i]
+    ]
+    return ans
+
+
+primes = set(prime_sieve(upper))
 class Solution:
-    def countWays(self, nums: List[int]) -> int:
-        N = len(nums)
-        nums.sort()
+    def countPaths(self, n: int, edges: List[List[int]]) -> int:
+        global primes
+
+        adj_list = collections.defaultdict(list)
+        for u, v in edges:
+            adj_list[u].append(v)
+
+        @cache
+        def count_paths(root, contains_prime):
+            if root in primes:
+                if contains_prime:
+                    return 0, False
+                contains_prime = True
+            ans = 0
+            valid_seen = contains_prime
+            for v in adj_list[root]:
+                cnt, valid = count_paths(v, contains_prime)
+                if valid:
+                    ans += 1 + cnt
+                    valid_seen = True
+            return ans, valid_seen
+
         ans = 0
-        for i in range(1, N - 1):
-            if i > nums[i - 1]:
-                ans += 1
-        for i in range(N - 1, -1, -1):
-            if i < nums[i]:
-                ans += 1
+        for i in range(1, n + 1):
+            cnt, valid = count_paths(i, False)
+            if valid:
+                ans += cnt
         return ans
-
-
 class SegTree:
 
     def __init__(self, arr):

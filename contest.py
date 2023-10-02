@@ -29,36 +29,109 @@ def prime_sieve(n):
     return ans
 
 
-primes = set(prime_sieve(upper))
+#
+# primes = set(prime_sieve(upper))
 class Solution:
-    def countPaths(self, n: int, edges: List[List[int]]) -> int:
-        global primes
-
+    def countVisitedNodes(self, edges: List[int]) -> List[int]:
+        N = len(edges)
         adj_list = collections.defaultdict(list)
-        for u, v in edges:
-            adj_list[u].append(v)
+
+        def kahn():
+            in_degree = [0] * N
+
+            for i in range(N):
+                from_node = i
+                to_node = edges[i]
+                adj_list[from_node].append(to_node)
+                in_degree[to_node] += 1
+
+            q = collections.deque()
+            for i in range(N):
+                if in_degree[i] == 0:
+                    q.append(i)
+
+            while len(q) > 0:
+                size = len(q)
+                for _ in range(size):
+                    node = q.popleft()
+                    for next_node in adj_list[node]:
+                        in_degree[next_node] -= 1
+                        if in_degree[next_node] == 0:
+                            q.append(next_node)
+            return in_degree
+
+        in_degree = kahn()
+        has_cycle = [x != 0 for x in in_degree]
+        cycle_size = [0] * N
+
+        def get_cycle_size(i, seen, size):
+            if i in seen:
+                return size
+            seen.add(i)
+            cycle_size_here = 0
+            for j in adj_list[i]:
+                cycle_size_here = get_cycle_size(j, seen, size + 1)
+            cycle_size[i] = cycle_size_here
+            return cycle_size_here
+
+        for i in range(N):
+            if has_cycle[i] and cycle_size[i] == 0:
+                get_cycle_size(i, set(), 0)
 
         @cache
-        def count_paths(root, contains_prime):
-            if root in primes:
-                if contains_prime:
-                    return 0, False
-                contains_prime = True
-            ans = 0
-            valid_seen = contains_prime
-            for v in adj_list[root]:
-                cnt, valid = count_paths(v, contains_prime)
-                if valid:
-                    ans += 1 + cnt
-                    valid_seen = True
-            return ans, valid_seen
+        def dfs(i):
+            if has_cycle[i]:
+                return cycle_size[i]
+            ans = 1
+            for next_node in adj_list[i]:
+                ans += dfs(next_node)
+            return ans
 
-        ans = 0
-        for i in range(1, n + 1):
-            cnt, valid = count_paths(i, False)
-            if valid:
-                ans += cnt
+        ans = []
+        for i in range(N):
+            ans.append(dfs(i))
         return ans
+
+        # has_cache = [False] * N
+
+
+#
+# has_cache[-1] = True
+# cache[-1] = nums[-1]
+#
+# def go(i, r, a):
+#     if i < 0:
+#         return 0
+#     score_here = nums[i]
+#     score_ahead = nums[i]
+#     if i + 1 < r:
+#         score_ahead = a
+#     include_here = (score_here & score_ahead)
+#     ans = 0
+#     if include_here <= score_ahead and include_here <= score_here:
+#         ans = 1 + go(i - 2, i, nums[i - 1])
+#     ans = max(ans, go(i - 1, r, a))
+#
+#     return ans
+#
+# return go(N - 1, N - 1, nums[-1])
+
+# prefix_and = [0] * N
+# prefix_sum = [0] * N
+# prefix_and[0] = nums[0]
+# prefix_sum[0] = nums[0]
+# for i in range(1, N):
+#     prefix_and[i] = prefix_and[i - 1] & nums[i]
+#     prefix_sum[i] = prefix_sum[i - 1] + prefix_and[i]
+# ans = prefix_sum[-1]
+#
+# def go(l,r):
+#     if i == N:
+#         return 0
+#
+#     split_here =
+
+
 class SegTree:
 
     def __init__(self, arr):

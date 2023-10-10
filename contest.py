@@ -32,104 +32,58 @@ def prime_sieve(n):
 #
 # primes = set(prime_sieve(upper))
 class Solution:
-    def countVisitedNodes(self, edges: List[int]) -> List[int]:
-        N = len(edges)
-        adj_list = collections.defaultdict(list)
+    def minOperations(self, s1: str, s2: str, x: int) -> int:
+        # if s1.count('1') != s2.count('1'):
+        #     return -1
 
-        def kahn():
-            in_degree = [0] * N
+        s1 = [int(c) for c in s1]
+        s2 = [int(c) for c in s2]
+        INF = 10 ** 20
+        N = len(s1)
 
-            for i in range(N):
-                from_node = i
-                to_node = edges[i]
-                adj_list[from_node].append(to_node)
-                in_degree[to_node] += 1
+        ans = 0
 
-            q = collections.deque()
-            for i in range(N):
-                if in_degree[i] == 0:
-                    q.append(i)
+        def flip(x):
+            return (x + 1) % 2
 
-            while len(q) > 0:
-                size = len(q)
-                for _ in range(size):
-                    node = q.popleft()
-                    for next_node in adj_list[node]:
-                        in_degree[next_node] -= 1
-                        if in_degree[next_node] == 0:
-                            q.append(next_node)
-            return in_degree
 
-        in_degree = kahn()
-        has_cycle = [x != 0 for x in in_degree]
-        cycle_size = [0] * N
+        cache = {}
 
-        def get_cycle_size(i, seen, size):
-            if i in seen:
-                return size
-            seen.add(i)
-            cycle_size_here = 0
-            for j in adj_list[i]:
-                cycle_size_here = get_cycle_size(j, seen, size + 1)
-            cycle_size[i] = cycle_size_here
-            return cycle_size_here
+        def get_min(i, s1):
+            if i == N:
+                if s1 == s2:
+                    return 0
+                return INF
+            ans = INF
+            if s1[i] == s2[i]:
+                return get_min(i + 1, s1)
+            s = "".join([str(a) for a in s1])
+            if (i, s) in cache:
+                return cache[(i, s)]
 
-        for i in range(N):
-            if has_cycle[i] and cycle_size[i] == 0:
-                get_cycle_size(i, set(), 0)
-
-        @cache
-        def dfs(i):
-            if has_cycle[i]:
-                return cycle_size[i]
-            ans = 1
-            for next_node in adj_list[i]:
-                ans += dfs(next_node)
+            if i < N - 1:
+                s1[i] = flip(s1[i])
+                s1[i + 1] = flip(s1[i + 1])
+                ans = min(ans, 1 + get_min(i + 1, s1))
+                s1[i] = flip(s1[i])
+                s1[i + 1] = flip(s1[i + 1])
+            for j in range(N - 1, i + 1, -1):
+                if flip(s1[i]) == s2[i] and flip(s1[j]) == s2[j]:  # and s1[j - 1] == s2[j - 1]:
+                    # if j < N - 1 and s1[j + 1] != s2[j + 1]:
+                    #     continue
+                    s1[i] = flip(s1[i])
+                    s1[j] = flip(s1[j])
+                    ans = min(ans, x + get_min(i + 1, s1))
+                    s1[i] = flip(s1[i])
+                    s1[j] = flip(s1[j])
+                    # break
+            cache[(i, s)] = ans
             return ans
 
-        ans = []
-        for i in range(N):
-            ans.append(dfs(i))
+        ans = get_min(0, s1)
+        if ans >= INF:
+            return -1
         return ans
-
-        # has_cache = [False] * N
-
-
-#
-# has_cache[-1] = True
-# cache[-1] = nums[-1]
-#
-# def go(i, r, a):
-#     if i < 0:
-#         return 0
-#     score_here = nums[i]
-#     score_ahead = nums[i]
-#     if i + 1 < r:
-#         score_ahead = a
-#     include_here = (score_here & score_ahead)
-#     ans = 0
-#     if include_here <= score_ahead and include_here <= score_here:
-#         ans = 1 + go(i - 2, i, nums[i - 1])
-#     ans = max(ans, go(i - 1, r, a))
-#
-#     return ans
-#
-# return go(N - 1, N - 1, nums[-1])
-
-# prefix_and = [0] * N
-# prefix_sum = [0] * N
-# prefix_and[0] = nums[0]
-# prefix_sum[0] = nums[0]
-# for i in range(1, N):
-#     prefix_and[i] = prefix_and[i - 1] & nums[i]
-#     prefix_sum[i] = prefix_sum[i - 1] + prefix_and[i]
-# ans = prefix_sum[-1]
-#
-# def go(l,r):
-#     if i == N:
-#         return 0
-#
-#     split_here =
 
 
 class SegTree:

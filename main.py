@@ -1,37 +1,25 @@
 from contest import Solution
-from leetcode.editor.en.Q1420.BuildArrayWhereYouCanFindTheMaximumExactlyKComparisons import \
-    BuildArrayWhereYouCanFindTheMaximumExactlyKComparisons
-from leetcode.editor.en.Q2896.ApplyOperationsToMakeTwoStringsEqual import ApplyOperationsToMakeTwoStringsEqual
-from leetcode.editor.en.Q343.IntegerBreak import IntegerBreak
+from leetcode.editor.en.Q2009.MinimumNumberOfOperationsToMakeArrayContinuous import \
+    MinimumNumberOfOperationsToMakeArrayContinuous
 
 dummy = Solution()
 
 if __name__ == '__main__':
     # print(BuildArrayWhereYouCanFindTheMaximumExactlyKComparisons().numOfArrays(n=50, m=100, k=25))
-    # print(ApplyOperationsToMakeTwoStringsEqual().minOperations("11001011111",
-    #                                                            "01111000110",
-    #                                                            2))  # 4
-    print(ApplyOperationsToMakeTwoStringsEqual().minOperations("10110",
-                                                               "00011",
-                                                               4))  # -1
-    # print(Solution().minOperations("10010111001",
-    #                                "11101011110",
-    #                                1))  # 4
+    print(MinimumNumberOfOperationsToMakeArrayContinuous().minOperations(
+        [1, 2, 3, 10, 20]
+
+    ))
+
+    # print(MinimumNumberOfOperationsToMakeArrayContinuous().minOperations(
+    #     [6871, 3056, 8843, 3642, 4544, 300, 6054, 6345, 2161, 1107, 1957, 6273, 2799, 6665, 2000, 1483, 3148, 1655,
+    #      7468, 4904, 9195, 9500, 7041, 7335, 8494, 386, 7754, 8739, 6893, 1015, 6411, 641, 4631, 6156, 7146, 4461, 9517,
+    #      960, 7328, 5314, 3846, 9943, 59, 3310, 9637, 3296, 7056, 4873, 5226, 3943, 5488, 4193, 8906, 259, 626, 9800,
+    #      9725, 8610, 901, 2467, 3722, 9322, 9500, 1348, 8727, 5618, 8641, 6579, 9689, 1776, 6421, 7690, 6414, 8600,
+    #      4285, 3513, 3210, 7290, 8918, 882, 2099, 6472, 4902, 553, 6420, 4586, 3478, 5130, 7785, 3679, 2301, 5460, 4285,
+    #      9409, 1160, 7447, 3127, 8771, 9863, 9452, 9879, 207, 3792, 5044, 9256, 8011, 8119, 8815, 6762, 2255, 3754,
+    #      4301, 5534, 5667, 3672, 1063, 4667, 7711, 6225, 9914, 7845, 1180, 7461, 6807, 7219, 5071, 3185, 8433, 2367,
+    #      3397, 1608, 7779, 3893, 4172, 4470, 2793, 502, 4781, 2659, 7601, 784, 2267, 5121, 9394, 2582, 3479, 4087, 2110,
+    #      7723, 6859, 3423, 1512, 9040, 2479, 1704, 8963, 7801, 6430, 4575, 2263, 3525, 3325, 3491, 476, 8585, 3243]
     #
-    # print(Solution().minOperations("1011100000100100101",
-    #                                "1110001001110000011",
-    #                                14))  # -1
-    # print(Solution().minOperations("011100",
-    #                                "111000",
-    #                                1))  # 1
-    # #
-    # print(Solution().minOperations("0100100101100111101111111110111101010110010010110101011110001100000010001110",
-    #                                "1000111000100001001110000110111011010011101000111010100101110111110110101101",
-    #                                84))
-    # print(Solution().minOperations(
-    #     "100010010100111100001110101111100001001101011010100111101011100100011111110001011001001",
-    #     "000001100010010011111101100101111011101110010001001010100101011100011110000111010011010",
-    #     6))
-    # print(Solution().minOperations("101101",
-    #                                "000000",
-    #                                6))
+    #     ))

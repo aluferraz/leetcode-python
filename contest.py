@@ -32,58 +32,37 @@ def prime_sieve(n):
 #
 # primes = set(prime_sieve(upper))
 class Solution:
-    def minOperations(self, s1: str, s2: str, x: int) -> int:
-        # if s1.count('1') != s2.count('1'):
-        #     return -1
+    def countSubMultisets(self, nums: List[int], l: int, r: int) -> int:
+        MOD = 10 ** 9 + 7
+        nums.sort(reverse=True)
+        N = len(nums)
 
-        s1 = [int(c) for c in s1]
-        s2 = [int(c) for c in s2]
-        INF = 10 ** 20
-        N = len(s1)
+        # @cache
+        def sum_up_to(i, k, t):
+            if k == t:
+                return 1
 
-        ans = 0
-
-        def flip(x):
-            return (x + 1) % 2
-
-
-        cache = {}
-
-        def get_min(i, s1):
             if i == N:
-                if s1 == s2:
-                    return 0
-                return INF
-            ans = INF
-            if s1[i] == s2[i]:
-                return get_min(i + 1, s1)
-            s = "".join([str(a) for a in s1])
-            if (i, s) in cache:
-                return cache[(i, s)]
+                return 0
+            use = 0
 
-            if i < N - 1:
-                s1[i] = flip(s1[i])
-                s1[i + 1] = flip(s1[i + 1])
-                ans = min(ans, 1 + get_min(i + 1, s1))
-                s1[i] = flip(s1[i])
-                s1[i + 1] = flip(s1[i + 1])
-            for j in range(N - 1, i + 1, -1):
-                if flip(s1[i]) == s2[i] and flip(s1[j]) == s2[j]:  # and s1[j - 1] == s2[j - 1]:
-                    # if j < N - 1 and s1[j + 1] != s2[j + 1]:
-                    #     continue
-                    s1[i] = flip(s1[i])
-                    s1[j] = flip(s1[j])
-                    ans = min(ans, x + get_min(i + 1, s1))
-                    s1[i] = flip(s1[i])
-                    s1[j] = flip(s1[j])
-                    # break
-            cache[(i, s)] = ans
+            if (k + nums[i]) <= t:
+                use = sum_up_to(i + 1, k + nums[i], t)
+            skip = sum_up_to(i + 1, k, t)
+            ans = use + skip
             return ans
 
-        ans = get_min(0, s1)
-        if ans >= INF:
-            return -1
-        return ans
+            # return sum_up_to(i + 1, k + nums[i], t)
+
+        total_r = sum_up_to(0, 0, r)
+        total_l = 0
+        if l > 1:
+            total_l = sum_up_to(0, 0, l - 1)
+        c = 0
+        for n in nums:
+            if n >= l and n <= r:
+                c += 1
+        return (total_r - total_l + c) % MOD
 
 
 class SegTree:

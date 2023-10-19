@@ -3,6 +3,7 @@ from leetcode.editor.en.Q119.PascalsTriangleIi import PascalsTriangleIi
 from leetcode.editor.en.Q1361.ValidateBinaryTreeNodes import ValidateBinaryTreeNodes
 from leetcode.editor.en.Q2009.MinimumNumberOfOperationsToMakeArrayContinuous import \
     MinimumNumberOfOperationsToMakeArrayContinuous
+from leetcode.editor.en.Q2050.ParallelCoursesIii import ParallelCoursesIii
 from leetcode.editor.en.Q2251.NumberOfFlowersInFullBloom import NumberOfFlowersInFullBloom
 from leetcode.editor.en.Q2742.PaintingTheWalls import PaintingTheWalls
 from leetcode.editor.en.Q505.TheMazeIi import TheMazeIi
@@ -10,4 +11,4 @@ from leetcode.editor.en.Q505.TheMazeIi import TheMazeIi
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(ValidateBinaryTreeNodes().validateBinaryTreeNodes(N=3, leftChild=[1, -1, -1], rightChild=[-1, -1, 1]))
+    print(ParallelCoursesIii().minimumTime(n=3, relations=[[1, 3], [2, 3]], time=[3, 2, 5]))

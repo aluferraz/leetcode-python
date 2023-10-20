@@ -7,8 +7,10 @@ from leetcode.editor.en.Q2050.ParallelCoursesIii import ParallelCoursesIii
 from leetcode.editor.en.Q2251.NumberOfFlowersInFullBloom import NumberOfFlowersInFullBloom
 from leetcode.editor.en.Q2742.PaintingTheWalls import PaintingTheWalls
 from leetcode.editor.en.Q505.TheMazeIi import TheMazeIi
+from leetcode.editor.en.Q844.BackspaceStringCompare import BackspaceStringCompare
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(ParallelCoursesIii().minimumTime(n=3, relations=[[1, 3], [2, 3]], time=[3, 2, 5]))
+    print(BackspaceStringCompare().backspaceCompare("nzp#o#g"
+, "b#nzp#o#g"))

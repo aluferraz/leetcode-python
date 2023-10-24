@@ -1,16 +1,11 @@
 from contest import Solution
-from leetcode.editor.en.Q119.PascalsTriangleIi import PascalsTriangleIi
-from leetcode.editor.en.Q1361.ValidateBinaryTreeNodes import ValidateBinaryTreeNodes
-from leetcode.editor.en.Q2009.MinimumNumberOfOperationsToMakeArrayContinuous import \
-    MinimumNumberOfOperationsToMakeArrayContinuous
-from leetcode.editor.en.Q2050.ParallelCoursesIii import ParallelCoursesIii
-from leetcode.editor.en.Q2251.NumberOfFlowersInFullBloom import NumberOfFlowersInFullBloom
-from leetcode.editor.en.Q2742.PaintingTheWalls import PaintingTheWalls
-from leetcode.editor.en.Q505.TheMazeIi import TheMazeIi
+from leetcode.editor.en.Q1425.ConstrainedSubsequenceSum import ConstrainedSubsequenceSum
+from leetcode.editor.en.Q1793.MaximumScoreOfAGoodSubarray import MaximumScoreOfAGoodSubarray
 from leetcode.editor.en.Q844.BackspaceStringCompare import BackspaceStringCompare
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(BackspaceStringCompare().backspaceCompare("nzp#o#g"
-, "b#nzp#o#g"))
+    print(MaximumScoreOfAGoodSubarray().maximumScore(
+        nums=[8182, 1273, 9847, 6230, 52, 1467, 6062, 726, 4852, 4507, 2460, 2041, 500, 1025, 5524]
+        , k=8))

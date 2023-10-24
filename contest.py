@@ -75,7 +75,7 @@ class SegTree:
         for i in range(self.size - 1, -1, -1):
             a = self.segtree[2 * i]
             b = self.segtree[(2 * i) + 1]
-            self.segtree[i] = a + b
+            self.segtree[i] = max(a, b)
 
     def queryRange(self, left, right):
         left += self.size

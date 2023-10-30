@@ -32,37 +32,33 @@ def prime_sieve(n):
 #
 # primes = set(prime_sieve(upper))
 class Solution:
-    def countSubMultisets(self, nums: List[int], l: int, r: int) -> int:
-        MOD = 10 ** 9 + 7
-        nums.sort(reverse=True)
+    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
+        INF = 10 ** 20
         N = len(nums)
+        has_cache = [[0 for _ in range(target + 1)] for _ in range(N + 1)]
+        cache = [[False for _ in range(target + 1)] for _ in range(N + 1)]
 
-        # @cache
-        def sum_up_to(i, k, t):
-            if k == t:
-                return 1
-
+        def go(i, k):
             if i == N:
+                return 0 if k == 0 else -INF
+            if k == 0:
                 return 0
-            use = 0
-
-            if (k + nums[i]) <= t:
-                use = sum_up_to(i + 1, k + nums[i], t)
-            skip = sum_up_to(i + 1, k, t)
-            ans = use + skip
+            if k < 0:
+                return -INF
+            if nums[i] > k:
+                return -INF
+            if has_cache[i][k]:
+                return cache[i][k]
+            ans = 1 + go(i + 1, k - nums[i])
+            ans = max(ans, go(i + 1, k))
+            has_cache[i][k] = True
+            cache[i][k] = ans
             return ans
 
-            # return sum_up_to(i + 1, k + nums[i], t)
-
-        total_r = sum_up_to(0, 0, r)
-        total_l = 0
-        if l > 1:
-            total_l = sum_up_to(0, 0, l - 1)
-        c = 0
-        for n in nums:
-            if n >= l and n <= r:
-                c += 1
-        return (total_r - total_l + c) % MOD
+        ans = go(0, target)
+        if ans < 0:
+            return -1
+        return ans
 
 
 class SegTree:

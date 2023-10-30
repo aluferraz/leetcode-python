@@ -1,11 +1,9 @@
 from contest import Solution
-from leetcode.editor.en.Q2904.ShortestAndLexicographicallySmallestBeautifulString import \
-    ShortestAndLexicographicallySmallestBeautifulString
-from leetcode.editor.en.Q2905.FindIndicesWithIndexAndValueDifferenceIi import FindIndicesWithIndexAndValueDifferenceIi
+from leetcode.editor.en.Q1220.CountVowelsPermutation import CountVowelsPermutation
 from leetcode.editor.en.Q2906.ConstructProductMatrix import ConstructProductMatrix
-from leetcode.editor.en.Q5.LongestPalindromicSubstring import LongestPalindromicSubstring
+from leetcode.editor.en.Q458.PoorPigs import PoorPigs
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(ConstructProductMatrix().constructProductMatrix([[12345], [2], [1]]))
+    print(PoorPigs().poorPigs(buckets=8, minutesToDie=15, minutesToTest=15))

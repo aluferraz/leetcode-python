@@ -38,3 +38,6 @@ class Solution(object):
 
 class EliminateMaximumNumberOfMonsters(Solution):
     pass
+
+
+

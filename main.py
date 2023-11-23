@@ -1,4 +1,5 @@
 from contest import Solution
+from leetcode.editor.en.Q1424.DiagonalTraverseIi import DiagonalTraverseIi
 from leetcode.editor.en.Q1814.CountNicePairsInAnArray import CountNicePairsInAnArray
 from leetcode.editor.en.Q1838.FrequencyOfTheMostFrequentElement import FrequencyOfTheMostFrequentElement
 from leetcode.editor.en.Q1887.ReductionOperationsToMakeTheArrayElementsEqual import \
@@ -10,4 +11,9 @@ from leetcode.editor.en.Q2391.MinimumAmountOfTimeToCollectGarbage import Minimum
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(CountNicePairsInAnArray().countNicePairs([42, 11, 1, 97]))
+    # print(DiagonalTraverseIi().findDiagonalOrder([[1, 2, 3], [4], [5, 6, 7], [8], [9, 10, 11]]
+    #
+    #                                              ))
+    print(DiagonalTraverseIi().findDiagonalOrder([[1,2,3,4,5],[6,7],[8],[9,10,11],[12,13,14,15,16]]
+
+                                                 ))

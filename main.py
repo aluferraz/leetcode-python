@@ -7,4 +7,4 @@ from leetcode.editor.en.Q2147.NumberOfWaysToDivideALongCorridor import NumberOfW
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(CalculateMoneyInLeetcodeBank().totalMoney(20))
+    print(Solution().maxSubarrayLength([1, 2, 3, 1, 2, 3, 1, 2], 2))

@@ -32,32 +32,22 @@ def prime_sieve(n):
 #
 # primes = set(prime_sieve(upper))
 class Solution:
-    def lengthOfLongestSubsequence(self, nums: List[int], target: int) -> int:
-        INF = 10 ** 20
+    def maxSubarrayLength(self, nums: List[int], k: int) -> int:
+        left = 0
+        cnt = collections.defaultdict(int)
+        freq = sortedcontainers.SortedList()
         N = len(nums)
-        has_cache = [[0 for _ in range(target + 1)] for _ in range(N + 1)]
-        cache = [[False for _ in range(target + 1)] for _ in range(N + 1)]
-
-        def go(i, k):
-            if i == N:
-                return 0 if k == 0 else -INF
-            if k == 0:
-                return 0
-            if k < 0:
-                return -INF
-            if nums[i] > k:
-                return -INF
-            if has_cache[i][k]:
-                return cache[i][k]
-            ans = 1 + go(i + 1, k - nums[i])
-            ans = max(ans, go(i + 1, k))
-            has_cache[i][k] = True
-            cache[i][k] = ans
-            return ans
-
-        ans = go(0, target)
-        if ans < 0:
-            return -1
+        ans = 0
+        for i in range(N):
+            freq.discard(cnt[nums[i]])
+            cnt[nums[i]] += 1
+            freq.add(cnt[nums[i]])
+            while len(cnt) > 0 and len(freq) > 0 and freq[-1] > k:
+                freq.discard(cnt[nums[left]])
+                cnt[nums[left]] -= 1
+                freq.add(cnt[nums[left]])
+                left += 1
+            ans = max(ans, (i - left + 1))
         return ans
 
 

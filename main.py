@@ -1,11 +1,8 @@
 from contest import Solution
-from leetcode.editor.en.Q1216.ValidPalindromeIii import ValidPalindromeIii
-from leetcode.editor.en.Q1624.LargestSubstringBetweenTwoEqualCharacters import LargestSubstringBetweenTwoEqualCharacters
-from leetcode.editor.en.Q2981.FindLongestSpecialSubstringThatOccursThriceI import \
-    FindLongestSpecialSubstringThatOccursThriceI
-from leetcode.editor.en.Q2983.PalindromeRearrangementQueries import PalindromeRearrangementQueries
+from leetcode.editor.en.Q1066.CampusBikesIi import CampusBikesIi
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(PalindromeRearrangementQueries().canMakePalindromeQueries("abcabc", [[1, 1, 3, 5], [0, 2, 5, 5]]))
+    print(CampusBikesIi().assignBikes([[815, 60], [638, 626], [6, 44], [103, 90], [591, 880]],
+                                      [[709, 161], [341, 339], [755, 955], [172, 27], [433, 489]]))

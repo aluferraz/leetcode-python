@@ -11,5 +11,3 @@ if __name__ == '__main__':
     print(TaskScheduler().leastInterval(["A","A","A","B","B","B", "C","C","C", "D", "D", "E"]
 , n = 2))
 
-
-

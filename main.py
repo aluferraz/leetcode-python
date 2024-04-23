@@ -1,9 +1,8 @@
 from contest import Solution
-from leetcode.editor.en.Q402.RemoveKDigits import RemoveKDigits
-from leetcode.editor.en.Q42.TrappingRainWater import TrappingRainWater
-from leetcode.editor.en.Q85.MaximalRectangle import MaximalRectangle
+from leetcode.editor.en.Q752.OpenTheLock import OpenTheLock
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(MaximalRectangle().maximalRectangle([["1","0","1","1","0","1"],["1","1","1","1","1","1"],["0","1","1","0","1","1"],["1","1","1","0","1","0"],["0","1","1","1","1","1"],["1","1","0","1","1","1"]]))
+    print(OpenTheLock().openLock(["8887", "8889", "8878", "8898", "8788", "8988", "7888", "9888"]
+                                 , "8888"))

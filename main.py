@@ -1,7 +1,8 @@
 from contest import Solution
-from leetcode.editor.en.Q834.SumOfDistancesInTree import SumOfDistancesInTree
+from leetcode.editor.en.Q2997.MinimumNumberOfOperationsToMakeArrayXorEqualToK import \
+    MinimumNumberOfOperationsToMakeArrayXorEqualToK
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(SumOfDistancesInTree().sumOfDistancesInTree(n=6, edges=[[0, 1], [0, 2], [2, 3], [2, 4], [2, 5]]))
+    print(MinimumNumberOfOperationsToMakeArrayXorEqualToK().minOperations([2, 1, 3, 4], k=1))

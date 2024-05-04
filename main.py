@@ -1,8 +1,7 @@
 from contest import Solution
-from leetcode.editor.en.Q2997.MinimumNumberOfOperationsToMakeArrayXorEqualToK import \
-    MinimumNumberOfOperationsToMakeArrayXorEqualToK
+from leetcode.editor.en.Q1915.NumberOfWonderfulSubstrings import NumberOfWonderfulSubstrings
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(MinimumNumberOfOperationsToMakeArrayXorEqualToK().minOperations([2, 1, 3, 4], k=1))
+    print(NumberOfWonderfulSubstrings().wonderfulSubstrings("aabb"))

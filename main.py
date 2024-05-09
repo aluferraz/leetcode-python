@@ -1,7 +1,7 @@
 from contest import Solution
-from leetcode.editor.en.Q1915.NumberOfWonderfulSubstrings import NumberOfWonderfulSubstrings
+from leetcode.editor.en.Q506.RelativeRanks import RelativeRanks
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(NumberOfWonderfulSubstrings().wonderfulSubstrings("aabb"))
+    print(RelativeRanks().findRelativeRanks([10, 3, 8, 9, 4]))

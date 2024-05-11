@@ -1,7 +1,7 @@
 from contest import Solution
-from leetcode.editor.en.Q506.RelativeRanks import RelativeRanks
+from leetcode.editor.en.Q3075.MaximizeHappinessOfSelectedChildren import MaximizeHappinessOfSelectedChildren
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(RelativeRanks().findRelativeRanks([10, 3, 8, 9, 4]))
+    print(MaximizeHappinessOfSelectedChildren().maximumHappinessSum([1, 2, 3], k=2))

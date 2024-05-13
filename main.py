@@ -1,7 +1,8 @@
 from contest import Solution
-from leetcode.editor.en.Q3075.MaximizeHappinessOfSelectedChildren import MaximizeHappinessOfSelectedChildren
+from leetcode.editor.en.Q857.MinimumCostToHireKWorkers import MinimumCostToHireKWorkers
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(MaximizeHappinessOfSelectedChildren().maximumHappinessSum([1, 2, 3], k=2))
+    print(MinimumCostToHireKWorkers().mincostToHireWorkers(quality=[10, 20, 5], wage=[70, 50, 30], k=2
+                                                           ))

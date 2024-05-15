@@ -4,5 +4,5 @@ from leetcode.editor.en.Q857.MinimumCostToHireKWorkers import MinimumCostToHireK
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(MinimumCostToHireKWorkers().mincostToHireWorkers(quality=[10, 20, 5], wage=[70, 50, 30], k=2
+    print(MinimumCostToHireKWorkers().mincostToHireWorkers(quality=[3, 1, 10, 10, 1], wage=[4, 8, 2, 2, 7], k=3
                                                            ))

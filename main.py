@@ -1,7 +1,8 @@
 from contest import Solution
-from leetcode.editor.en.Q140.WordBreakIi import WordBreakIi
+from leetcode.editor.en.Q1608.SpecialArrayWithXElementsGreaterThanOrEqualX import \
+    SpecialArrayWithXElementsGreaterThanOrEqualX
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(WordBreakIi().wordBreak("aaaaaaa", ["aaaa", "aaa"]))
+    print(SpecialArrayWithXElementsGreaterThanOrEqualX().specialArray([3, 5]))

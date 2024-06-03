@@ -1,7 +1,7 @@
 from contest import Solution
-from leetcode.editor.en.Q1208.GetEqualSubstringsWithinBudget import GetEqualSubstringsWithinBudget
+from leetcode.editor.en.Q260.SingleNumberIii import SingleNumberIii
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(GetEqualSubstringsWithinBudget().equalSubstring(s="abcd", t="bcdf", maxCost=3))
+    print(SingleNumberIii().singleNumber([2, 1, 2, 3, 4, 1]))

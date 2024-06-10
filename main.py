@@ -1,8 +1,7 @@
 from contest import Solution
-from leetcode.editor.en.Q648.ReplaceWords import ReplaceWords
+from leetcode.editor.en.Q974.SubarraySumsDivisibleByK import SubarraySumsDivisibleByK
 
 dummy = Solution()
 
 if __name__ == '__main__':
-    print(
-        ReplaceWords().replaceWords(dictionary=["cat", "bat", "rat"], sentence="the cattle was rattled by the battery"))
+    print(SubarraySumsDivisibleByK().subarraysDivByK(nums=[8, 9, 7, 8, 9], k=8))

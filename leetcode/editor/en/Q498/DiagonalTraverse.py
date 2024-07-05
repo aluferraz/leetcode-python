@@ -10,23 +10,35 @@ class Solution(object):
         """
         N = len(mat)
         M = len(mat[0])
+
+        def is_valid(i, j):
+            return i >= 0 and i < N and j >= 0 and j < M
+
+        seen = set()
         ans = []
 
-        def go(i, j, d):
-            if i == N - 1 and j == M - 1:
-                return
-            if i < 0 or j >= M:
-                return go(i + 1, j + 1, (d + 1) % 2)
-            if j < 0 or i >= N:
-                return go(i + 1, 0, (d + 1) % 2)
-            ans.append(mat[i][j])
-            if d == 0:
+        def solve(i, j, flip, ans_here):
+            if not is_valid(i, j):
+                if flip:
+                    ans_here.reverse()
+                return ans
+            seen.add((i,j))
+            ans_here.append(mat[i][j])
+            return solve(i + 1, j - 1, flip, ans_here)
 
-                
-                return go(i - 1, j + 1, d)
-            return go(i + 1, j - 1, d)
-        go(0,0,0)
+        cur_flip = True
+
+        for i in range(N):
+            for j in range(M):
+                if (i, j) in seen:
+                    continue
+                ans_here = []
+                solve(i, j, cur_flip, ans_here)
+                cur_flip = not cur_flip
+                for el in ans_here:
+                    ans.append(el)
         return ans
+
 
 # leetcode submit region end(Prohibit modification and deletion)
 

@@ -1,4 +1,8 @@
-from leetcode.editor.en.Q2392.BuildAMatrixWithConditions import BuildAMatrixWithConditions
+from leetcode.editor.en.Q1334.FindTheCityWithTheSmallestNumberOfNeighborsAtAThresholdDistance import \
+    FindTheCityWithTheSmallestNumberOfNeighborsAtAThresholdDistance
 
 if __name__ == '__main__':
-    print(BuildAMatrixWithConditions().buildMatrix(k=3, rowConditions=[[1, 2], [3, 2]], colConditions=[[2, 1], [3, 2]]))
+    print(FindTheCityWithTheSmallestNumberOfNeighborsAtAThresholdDistance().findTheCity(n=4,
+                                                                                        edges=[[0, 1, 3], [1, 2, 1],
+                                                                                               [1, 3, 4], [2, 3, 1]],
+                                                                                        distanceThreshold=4))

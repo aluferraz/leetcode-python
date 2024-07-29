@@ -1,6 +1,5 @@
-from leetcode.editor.en.Q2976.MinimumCostToConvertStringI import MinimumCostToConvertStringI
+from leetcode.editor.en.Q2045.SecondMinimumTimeToReachDestination import SecondMinimumTimeToReachDestination
 
 if __name__ == '__main__':
     print(
-        MinimumCostToConvertStringI().minimumCost(source="abcd", target="abce", original=["a"], changed=["e"],
-                                                  cost=[10000]))
+        SecondMinimumTimeToReachDestination().secondMinimum(n=2, edges=[[1, 2]], time=3, change=2))

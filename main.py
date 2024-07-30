@@ -1,5 +1,5 @@
-from leetcode.editor.en.Q2045.SecondMinimumTimeToReachDestination import SecondMinimumTimeToReachDestination
+from leetcode.editor.en.Q1395.CountNumberOfTeams import CountNumberOfTeams
 
 if __name__ == '__main__':
     print(
-        SecondMinimumTimeToReachDestination().secondMinimum(n=2, edges=[[1, 2]], time=3, change=2))
+        CountNumberOfTeams().numTeams([1, 2, 3, 4]))

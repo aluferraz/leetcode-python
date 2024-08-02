@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q1395.CountNumberOfTeams import CountNumberOfTeams
+from leetcode.editor.en.Q1653.MinimumDeletionsToMakeStringBalanced import MinimumDeletionsToMakeStringBalanced
 
 if __name__ == '__main__':
-    print(
-        CountNumberOfTeams().numTeams([1, 2, 3, 4]))
+    print(MinimumDeletionsToMakeStringBalanced().minimumDeletions("bbaaaaabb"))

@@ -1,4 +1,5 @@
-from leetcode.editor.en.Q1653.MinimumDeletionsToMakeStringBalanced import MinimumDeletionsToMakeStringBalanced
+from leetcode.editor.en.Q2134.MinimumSwapsToGroupAll1sTogetherIi import MinimumSwapsToGroupAll1sTogetherIi
 
 if __name__ == '__main__':
-    print(MinimumDeletionsToMakeStringBalanced().minimumDeletions("bbaaaaabb"))
+    print(MinimumSwapsToGroupAll1sTogetherIi().minSwaps([0, 1, 0, 0, 1, 0, 0, 0, 1]
+                                                        ))

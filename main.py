@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q860.LemonadeChange import LemonadeChange
+from leetcode.editor.en.Q650.TwoKeysKeyboard import TwoKeysKeyboard
 
 if __name__ == '__main__':
-    print(LemonadeChange().lemonadeChange([5, 5, 10, 10, 20]
-                                          ))
+    print(TwoKeysKeyboard().minSteps(3))

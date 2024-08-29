@@ -1,4 +1,8 @@
-from leetcode.editor.en.Q564.FindTheClosestPalindrome import FindTheClosestPalindrome
+from leetcode.editor.en.Q1905.CountSubIslands import CountSubIslands
 
 if __name__ == '__main__':
-    print(FindTheClosestPalindrome().nearestPalindromic("1213"))
+    print(CountSubIslands().countSubIslands(
+        grid1=[[1, 1, 1, 1, 0, 0], [1, 1, 0, 1, 0, 0], [1, 0, 0, 1, 1, 1], [1, 1, 1, 0, 0, 1], [1, 1, 1, 1, 1, 0],
+               [1, 0, 1, 0, 1, 0], [0, 1, 1, 1, 0, 1], [1, 0, 0, 0, 1, 1], [1, 0, 0, 0, 1, 0], [1, 1, 1, 1, 1, 0]],
+        grid2=[[1, 1, 1, 1, 0, 1], [0, 0, 1, 0, 1, 0], [1, 1, 1, 1, 1, 1], [0, 1, 1, 1, 1, 1], [1, 1, 1, 0, 1, 0],
+               [0, 1, 1, 1, 1, 1], [1, 1, 0, 1, 1, 1], [1, 0, 0, 1, 0, 1], [1, 1, 1, 1, 1, 1], [1, 0, 0, 1, 0, 0]]))

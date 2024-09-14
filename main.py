@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2326.SpiralMatrixIv import SpiralMatrixIv
+from leetcode.editor.en.Q1310.XorQueriesOfASubarray import XorQueriesOfASubarray
 
 if __name__ == '__main__':
-    print(SpiralMatrixIv().spiralMatrix(m=3, n=5, head=[3, 0, 2, 6, 8, 1, 7, 9, 4, 2, 5, 5, 0]))
+    print(XorQueriesOfASubarray().xorQueries(arr=[1, 3, 4, 8], queries=[[0, 1], [1, 2], [0, 3], [3, 3]]))

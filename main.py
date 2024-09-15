@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q1310.XorQueriesOfASubarray import XorQueriesOfASubarray
+from leetcode.editor.en.Q2419.LongestSubarrayWithMaximumBitwiseAnd import LongestSubarrayWithMaximumBitwiseAnd
 
 if __name__ == '__main__':
-    print(XorQueriesOfASubarray().xorQueries(arr=[1, 3, 4, 8], queries=[[0, 1], [1, 2], [0, 3], [3, 3]]))
+    print(LongestSubarrayWithMaximumBitwiseAnd().longestSubarray([1, 2, 3, 3, 2, 2]))

@@ -1,4 +1,7 @@
-from leetcode.editor.en.Q539.MinimumTimeDifference import MinimumTimeDifference
+from leetcode.editor.en.Q3043.FindTheLengthOfTheLongestCommonPrefix import FindTheLengthOfTheLongestCommonPrefix
 
 if __name__ == '__main__':
-    print(MinimumTimeDifference().findMinDifference(["23:59", "00:00"]))
+    print(FindTheLengthOfTheLongestCommonPrefix().longestCommonPrefix([13, 27, 45]
+                                                                      , [21, 27, 48]
+
+                                                                      ))

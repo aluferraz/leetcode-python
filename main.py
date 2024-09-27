@@ -1,7 +1,8 @@
-from leetcode.editor.en.Q3043.FindTheLengthOfTheLongestCommonPrefix import FindTheLengthOfTheLongestCommonPrefix
+from leetcode.editor.en.Q729.MyCalendarI import MyCalendarI
 
 if __name__ == '__main__':
-    print(FindTheLengthOfTheLongestCommonPrefix().longestCommonPrefix([13, 27, 45]
-                                                                      , [21, 27, 48]
-
-                                                                      ))
+    # print(SumOfPrefixScoresOfStrings().sumPrefixScores(["abc", "ab", "bc", "b"]))
+    obj = MyCalendarI()
+    param_1 = obj.book(10, 20)
+    param_1 = obj.book(15, 25)
+    param_1 = obj.book(20, 30)

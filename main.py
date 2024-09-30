@@ -1,8 +1,12 @@
-from leetcode.editor.en.Q729.MyCalendarI import MyCalendarI
+from leetcode.editor.en.Q432.AllOoneDataStructure import AllOoneDataStructure
 
 if __name__ == '__main__':
     # print(SumOfPrefixScoresOfStrings().sumPrefixScores(["abc", "ab", "bc", "b"]))
-    obj = MyCalendarI()
-    param_1 = obj.book(10, 20)
-    param_1 = obj.book(15, 25)
-    param_1 = obj.book(20, 30)
+    obj = AllOoneDataStructure()
+    obj.inc("hello")
+    obj.inc("hello")
+    print(obj.getMaxKey())
+    print(obj.getMinKey())
+    obj.inc("leet")
+    print(obj.getMaxKey())
+    print(obj.getMinKey())

@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q1590.MakeSumDivisibleByP import MakeSumDivisibleByP
+from leetcode.editor.en.Q1813.SentenceSimilarityIii import SentenceSimilarityIii
 
 if __name__ == '__main__':
-    print(MakeSumDivisibleByP().minSubarray([26, 19, 11, 14, 18, 4, 7, 1, 30, 23, 19, 8, 10, 6, 26, 3]
-                                            , 26))
+    print(SentenceSimilarityIii().areSentencesSimilar(sentence1="A", sentence2="a A b A"))

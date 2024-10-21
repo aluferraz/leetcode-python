@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2406.DivideIntervalsIntoMinimumNumberOfGroups import DivideIntervalsIntoMinimumNumberOfGroups
+from leetcode.editor.en.Q1405.LongestHappyString import LongestHappyString
 
 if __name__ == '__main__':
-    print(DivideIntervalsIntoMinimumNumberOfGroups().minGroups([[5, 10], [6, 8], [1, 5], [2, 3], [1, 10]]))
+    print(LongestHappyString().longestDiverseString(a=1, b=1, c=7))

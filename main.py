@@ -1,4 +1,6 @@
-from leetcode.editor.en.Q1405.LongestHappyString import LongestHappyString
+from leetcode.editor.en.Q1593.SplitAStringIntoTheMaxNumberOfUniqueSubstrings import \
+    SplitAStringIntoTheMaxNumberOfUniqueSubstrings
 
 if __name__ == '__main__':
-    print(LongestHappyString().longestDiverseString(a=1, b=1, c=7))
+    print(SplitAStringIntoTheMaxNumberOfUniqueSubstrings().maxUniqueSplit("wwwzfvedwfvhsww"
+                                                                          ))

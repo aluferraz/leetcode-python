@@ -1,6 +1,5 @@
-from leetcode.editor.en.Q1593.SplitAStringIntoTheMaxNumberOfUniqueSubstrings import \
-    SplitAStringIntoTheMaxNumberOfUniqueSubstrings
+from leetcode.editor.en.Q2914.MinimumNumberOfChangesToMakeBinaryStringBeautiful import \
+    MinimumNumberOfChangesToMakeBinaryStringBeautiful
 
 if __name__ == '__main__':
-    print(SplitAStringIntoTheMaxNumberOfUniqueSubstrings().maxUniqueSplit("wwwzfvedwfvhsww"
-                                                                          ))
+    print(MinimumNumberOfChangesToMakeBinaryStringBeautiful().minChanges("11000111"))

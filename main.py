@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q2914.MinimumNumberOfChangesToMakeBinaryStringBeautiful import \
-    MinimumNumberOfChangesToMakeBinaryStringBeautiful
+from leetcode.editor.en.Q3097.ShortestSubarrayWithOrAtLeastKIi import ShortestSubarrayWithOrAtLeastKIi
 
 if __name__ == '__main__':
-    print(MinimumNumberOfChangesToMakeBinaryStringBeautiful().minChanges("11000111"))
+    print(ShortestSubarrayWithOrAtLeastKIi().minimumSubarrayLength([1, 2, 3], 3))

@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q3097.ShortestSubarrayWithOrAtLeastKIi import ShortestSubarrayWithOrAtLeastKIi
+from leetcode.editor.en.Q2601.PrimeSubtractionOperation import PrimeSubtractionOperation
 
 if __name__ == '__main__':
-    print(ShortestSubarrayWithOrAtLeastKIi().minimumSubarrayLength([1, 2, 3], 3))
+    print(PrimeSubtractionOperation().primeSubOperation([998, 2]))

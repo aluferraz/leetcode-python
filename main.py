@@ -1,4 +1,5 @@
-from leetcode.editor.en.Q2601.PrimeSubtractionOperation import PrimeSubtractionOperation
+from leetcode.editor.en.Q773.SlidingPuzzle import SlidingPuzzle
 
 if __name__ == '__main__':
-    print(PrimeSubtractionOperation().primeSubOperation([998, 2]))
+    print(SlidingPuzzle().slidingPuzzle([[1, 2, 3], [4, 0, 5]]
+                                        ))

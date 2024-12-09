@@ -1,4 +1,5 @@
-from leetcode.editor.en.Q2097.ValidArrangementOfPairs import ValidArrangementOfPairs
+from leetcode.editor.en.Q2054.TwoBestNonOverlappingEvents import TwoBestNonOverlappingEvents
 
 if __name__ == '__main__':
-    print(ValidArrangementOfPairs().validArrangement([[5, 1], [4, 5], [11, 9], [9, 4]]))
+    print(TwoBestNonOverlappingEvents().maxTwoEvents([[1, 3, 2], [4, 5, 2], [1, 5, 5]]
+                                                     ))

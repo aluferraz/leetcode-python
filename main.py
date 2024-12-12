@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q2054.TwoBestNonOverlappingEvents import TwoBestNonOverlappingEvents
+from leetcode.editor.en.Q3152.SpecialArrayIi import SpecialArrayIi
 
 if __name__ == '__main__':
-    print(TwoBestNonOverlappingEvents().maxTwoEvents([[1, 3, 2], [4, 5, 2], [1, 5, 5]]
-                                                     ))
+    print(SpecialArrayIi().isArraySpecial(nums=[4, 3, 1, 6], queries=[[0, 2], [2, 3]]))

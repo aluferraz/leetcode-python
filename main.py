@@ -3,7 +3,8 @@ from leetcode.editor.en.Q2182.ConstructStringWithRepeatLimit import ConstructStr
 from leetcode.editor.en.Q2257.CountUnguardedCellsInTheGrid import CountUnguardedCellsInTheGrid
 from leetcode.editor.en.Q2516.TakeKOfEachCharacterFromLeftAndRight import TakeKOfEachCharacterFromLeftAndRight
 from leetcode.editor.en.Q2601.PrimeSubtractionOperation import PrimeSubtractionOperation
+from leetcode.editor.en.Q494.TargetSum import TargetSum
 
 if __name__ == '__main__':
-    print(FinalPricesWithASpecialDiscountInAShop().finalPrices([8,4,6,2,3]))
+    print(TargetSum().findTargetSumWays(nums = [1,1,1,1,1], target = 3))
 

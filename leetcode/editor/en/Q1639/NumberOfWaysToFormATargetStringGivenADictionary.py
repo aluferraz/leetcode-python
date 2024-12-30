@@ -22,7 +22,7 @@ class Solution(object):
 
         MOD = (10 ** 9) + 7
 
-        def count(i, k):
+        def go(i, k):
             if i == N:
                 return 1
             if k not in letters:
@@ -33,16 +33,16 @@ class Solution(object):
             ans = 0
             needed = ord(target[i]) - ord('a')
             if letters[k][needed] == 0:
-                cache[(i, k)] = count(i, k + 1)
+                cache[(i, k)] = go(i, k + 1)
                 return cache[(i, k)]
             ways = letters[k][needed]
 
-            ans = (ways * count(i + 1, k + 1)) % MOD
-            ans = (ans + count(i, k + 1)) % MOD
+            ans = (ways * go(i + 1, k + 1)) % MOD
+            ans = (ans + go(i, k + 1)) % MOD
             cache[(i, k)] = ans
             return ans
 
-        return count(0, 0)
+        return go(0, 0)
 
 
 # leetcode submit region end(Prohibit modification and deletion)

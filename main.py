@@ -1,6 +1,4 @@
-from leetcode.editor.en.Q2466.CountWaysToBuildGoodStrings import CountWaysToBuildGoodStrings
-from leetcode.editor.en.Q689.MaximumSumOf3NonOverlappingSubarrays import MaximumSumOf3NonOverlappingSubarrays
+from leetcode.editor.en.Q2381.ShiftingLettersIi import ShiftingLettersIi
 
 if __name__ == '__main__':
-    print(CountWaysToBuildGoodStrings().countGoodStrings(low = 3, high = 3, zero = 1, one = 1))
-
+    print(ShiftingLettersIi().shiftingLetters(s="abc", shifts=[[0, 1, 0], [1, 2, 1], [0, 2, 1]]))

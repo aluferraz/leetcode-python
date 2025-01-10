@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2381.ShiftingLettersIi import ShiftingLettersIi
+from leetcode.editor.en.Q3042.CountPrefixAndSuffixPairsI import CountPrefixAndSuffixPairsI
 
 if __name__ == '__main__':
-    print(ShiftingLettersIi().shiftingLetters(s="abc", shifts=[[0, 1, 0], [1, 2, 1], [0, 2, 1]]))
+    print(CountPrefixAndSuffixPairsI().countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]))

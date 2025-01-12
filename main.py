@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q3042.CountPrefixAndSuffixPairsI import CountPrefixAndSuffixPairsI
+from leetcode.editor.en.Q1400.ConstructKPalindromeStrings import ConstructKPalindromeStrings
 
 if __name__ == '__main__':
-    print(CountPrefixAndSuffixPairsI().countPrefixSuffixPairs(["a", "aba", "ababa", "aa"]))
+    print(ConstructKPalindromeStrings().canConstruct(s="eminem", k=2))

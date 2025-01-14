@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q1400.ConstructKPalindromeStrings import ConstructKPalindromeStrings
+from leetcode.editor.en.Q3223.MinimumLengthOfStringAfterOperations import MinimumLengthOfStringAfterOperations
 
 if __name__ == '__main__':
-    print(ConstructKPalindromeStrings().canConstruct(s="eminem", k=2))
+    print(MinimumLengthOfStringAfterOperations().minimumLength("abaacbcbb"))

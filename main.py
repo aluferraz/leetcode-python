@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q3223.MinimumLengthOfStringAfterOperations import MinimumLengthOfStringAfterOperations
+from leetcode.editor.en.Q2429.MinimizeXor import MinimizeXor
 
 if __name__ == '__main__':
-    print(MinimumLengthOfStringAfterOperations().minimumLength("abaacbcbb"))
+    print(MinimizeXor().minimizeXor(2, 5))

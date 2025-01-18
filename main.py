@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2429.MinimizeXor import MinimizeXor
+from leetcode.editor.en.Q2683.NeighboringBitwiseXor import NeighboringBitwiseXor
 
 if __name__ == '__main__':
-    print(MinimizeXor().minimizeXor(2, 5))
+    print(NeighboringBitwiseXor().doesValidArrayExist(derived=[1, 0]))

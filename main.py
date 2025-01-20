@@ -1,4 +1,6 @@
-from leetcode.editor.en.Q2683.NeighboringBitwiseXor import NeighboringBitwiseXor
+from leetcode.editor.en.Q1368.MinimumCostToMakeAtLeastOneValidPathInAGrid import \
+    MinimumCostToMakeAtLeastOneValidPathInAGrid
 
 if __name__ == '__main__':
-    print(NeighboringBitwiseXor().doesValidArrayExist(derived=[1, 0]))
+    print(
+        MinimumCostToMakeAtLeastOneValidPathInAGrid().minCost([[1, 1, 1, 1], [2, 2, 2, 2], [1, 1, 1, 1], [2, 2, 2, 2]]))

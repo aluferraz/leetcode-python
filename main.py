@@ -1,6 +1,5 @@
-from leetcode.editor.en.Q1368.MinimumCostToMakeAtLeastOneValidPathInAGrid import \
-    MinimumCostToMakeAtLeastOneValidPathInAGrid
+from leetcode.editor.en.Q2017.GridGame import GridGame
 
 if __name__ == '__main__':
     print(
-        MinimumCostToMakeAtLeastOneValidPathInAGrid().minCost([[1, 1, 1, 1], [2, 2, 2, 2], [1, 1, 1, 1], [2, 2, 2, 2]]))
+        GridGame().gridGame([[20, 3, 20, 17, 2, 12, 15, 17, 4, 15], [20, 10, 13, 14, 15, 5, 2, 3, 14, 3]]))

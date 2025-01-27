@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q2017.GridGame import GridGame
+from leetcode.editor.en.Q1765.MapOfHighestPeak import MapOfHighestPeak
 
 if __name__ == '__main__':
-    print(
-        GridGame().gridGame([[20, 3, 20, 17, 2, 12, 15, 17, 4, 15], [20, 10, 13, 14, 15, 5, 2, 3, 14, 3]]))
+    print(MapOfHighestPeak().highestPeak(isWater=[[0, 0, 1], [1, 0, 0], [0, 0, 0]]))

@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q1462.CourseScheduleIv import CourseScheduleIv
+from leetcode.editor.en.Q2364.CountNumberOfBadPairs import CountNumberOfBadPairs
 
 if __name__ == '__main__':
-    print(CourseScheduleIv().checkIfPrerequisite(numCourses=2, prerequisites=[[1, 0]], queries=[[0, 1], [1, 0]]))
+    print(CountNumberOfBadPairs().countBadPairs([0, 1, 2, 3, 4]))

@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2364.CountNumberOfBadPairs import CountNumberOfBadPairs
+from leetcode.editor.en.Q2560.HouseRobberIv import HouseRobberIv
 
 if __name__ == '__main__':
-    print(CountNumberOfBadPairs().countBadPairs([0, 1, 2, 3, 4]))
+    print(HouseRobberIv().minCapability(nums=[2, 3, 5, 9], k=2))

@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2594.MinimumTimeToRepairCars import MinimumTimeToRepairCars
+from leetcode.editor.en.Q2401.LongestNiceSubarray import LongestNiceSubarray
 
 if __name__ == '__main__':
-    print(MinimumTimeToRepairCars().repairCars([1, 2], 10))
+    print(LongestNiceSubarray().longestNiceSubarray([3, 1, 5, 11, 13]))

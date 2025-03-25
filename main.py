@@ -1,5 +1,5 @@
-from leetcode.editor.en.Q3191.MinimumOperationsToMakeBinaryArrayElementsEqualToOneI import \
-    MinimumOperationsToMakeBinaryArrayElementsEqualToOneI
+from leetcode.editor.en.Q3169.CountDaysWithoutMeetings import CountDaysWithoutMeetings
 
 if __name__ == '__main__':
-    print(MinimumOperationsToMakeBinaryArrayElementsEqualToOneI().minOperations([0, 1, 1, 1, 0, 0]))
+    print(CountDaysWithoutMeetings().countDays(8,
+                                               [[2, 3], [3, 5], [8, 8]]))

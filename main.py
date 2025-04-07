@@ -1,5 +1,4 @@
-from leetcode.editor.en.Q3169.CountDaysWithoutMeetings import CountDaysWithoutMeetings
+from leetcode.editor.en.Q2873.MaximumValueOfAnOrderedTripletI import MaximumValueOfAnOrderedTripletI
 
 if __name__ == '__main__':
-    print(CountDaysWithoutMeetings().countDays(8,
-                                               [[2, 3], [3, 5], [8, 8]]))
+    print(MaximumValueOfAnOrderedTripletI().maximumTripletValue([5, 7, 8, 4]))

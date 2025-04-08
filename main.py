@@ -1,4 +1,4 @@
-from leetcode.editor.en.Q2873.MaximumValueOfAnOrderedTripletI import MaximumValueOfAnOrderedTripletI
+from leetcode.editor.en.Q416.PartitionEqualSubsetSum import PartitionEqualSubsetSum
 
 if __name__ == '__main__':
-    print(MaximumValueOfAnOrderedTripletI().maximumTripletValue([5, 7, 8, 4]))
+    print(PartitionEqualSubsetSum().canPartition([1, 5, 11, 5]))

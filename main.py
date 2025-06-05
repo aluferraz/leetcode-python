@@ -1,4 +1,5 @@
-from leetcode.editor.en.Q416.PartitionEqualSubsetSum import PartitionEqualSubsetSum
+from leetcode.editor.en.Q3403.FindTheLexicographicallyLargestStringFromTheBoxI import \
+    FindTheLexicographicallyLargestStringFromTheBoxI
 
 if __name__ == '__main__':
-    print(PartitionEqualSubsetSum().canPartition([1, 5, 11, 5]))
+    print(FindTheLexicographicallyLargestStringFromTheBoxI().answerString("gggg", 4))

@@ -1,5 +1,5 @@
-from leetcode.editor.en.Q3403.FindTheLexicographicallyLargestStringFromTheBoxI import \
-    FindTheLexicographicallyLargestStringFromTheBoxI
+from leetcode.editor.en.Q1061.LexicographicallySmallestEquivalentString import LexicographicallySmallestEquivalentString
 
 if __name__ == '__main__':
-    print(FindTheLexicographicallyLargestStringFromTheBoxI().answerString("gggg", 4))
+    print(LexicographicallySmallestEquivalentString().smallestEquivalentString(s1="parker", s2="morris",
+                                                                               baseStr="parser"))

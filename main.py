@@ -1,5 +1,5 @@
-from leetcode.editor.en.Q1061.LexicographicallySmallestEquivalentString import LexicographicallySmallestEquivalentString
+from leetcode.editor.en.Q2434.UsingARobotToPrintTheLexicographicallySmallestString import \
+    UsingARobotToPrintTheLexicographicallySmallestString
 
 if __name__ == '__main__':
-    print(LexicographicallySmallestEquivalentString().smallestEquivalentString(s1="parker", s2="morris",
-                                                                               baseStr="parser"))
+    print(UsingARobotToPrintTheLexicographicallySmallestString().robotWithString(s="robot"))
